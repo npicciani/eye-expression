@@ -2,26 +2,19 @@
 # load python 3 environment
 # -*- coding: utf-8 -*-
 """
-
 Created by Jacob Musser
 modified by Natasha Picciani
 last modified on June 7, 2021
 
 Generate annotations with eggNOG mapper, summarize emapper file, generate gene names and go terms for each gene, and produce gtf file
-
 Usage: makeGTF_emapper.py longORFS.fasta longORFS.pep geneID_type outputDirectory
-
 Arguments:
 
 	longORFS.fasta -- nucleotide fasta file with open reading frames
-
 	longORFS.pep -- protein fasta file with open reading frames
-
 	geneID_type -- type of gene identifier; type_1 = "compXX_cXX_seqXX", type_2="TRINITY_DNXXXXX_cX_gX_iX",
 			type_3="SegXX.XX.XXXX"
-	
 	outputDirectory -- path to output directory
-
 """
 
 import re
@@ -38,10 +31,10 @@ gonames_file = "/home/nnp9/local/datasets/go_terms_2019.txt" #GO Terms IDs and t
 
 
 # User inputs
-transcriptomeFile = sys.argv[1] #longORFs nucleotide file
-proteinFile = sys.argv[2] #longORFs peptide file
-geneID_type = sys.argv[3] #type of gene identifier
-outDir = sys.argv[4] #output directory
+transcriptomeFile = snakemake.input[0] #longORFs nucleotide file
+proteinFile = snakemake.input[1] #longORFs peptide file
+geneID_type = snakemake.input[2] #type of gene identifier
+outDir = snakemake.input[3] #output directory
 basename = PurePosixPath(transcriptomeFile).stem
 
 # Functionally annotate the ORF sequences with eggNOG-mapper
