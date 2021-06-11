@@ -1,37 +1,46 @@
-SPECIES="sarsia,tripedalia"
-SAMPLES="x,x,x"
-TRANSCRIPTOME=Trinity_20210112.fasta
-GENE_ID_TYPE=type_2
+#SPECIES="sarsia"
+#SAMPLES="x,x,x"
+TRANSCRIPTOME="Trinity_20210112.fasta"
+GENE_ID_TYPE="type_2"
+
+rule all:
+    input:
+        expand("reference/{transcriptome}.transdecoder_dir/longest_orfs.pep", transcriptome=TRANSCRIPTOME)
 
 rule generate_longest_ORFs:
     """
     Infer open reading frames in reference transcriptome.
-    """"
+    """
     input:
-        "{species}/reference/{transcriptome}.fasta"
+        "reference/{transcriptome}"
     output:
-        "{species}/reference/{transcriptome}.fasta.transdecoder_dir/longest_orfs.pep"
+        "reference/{transcriptome}.transdecoder_dir/longest_orfs.pep"
     shell:
         "TransDecoder.LongOrfs -t {input}"
 
-rule keep_longest_ORF_per_gene:
-    """
-    Keep longest open reading frames per gene (as per gene identifier). 
-    Details on functions and arguments in the python script itself.
-    """"
-    input:
-        "{species}/reference/{transcriptome}.fasta.transdecoder_dir/longest_orfs.pep",
-        "{species}/reference/{transcriptome}.fasta",
-        "{GENE_ID_TYPE}",
-        "{species}/reference/"
-    output:
-        peptides="{species}/reference/{transcriptome}_longestORFperGene.pep"
-        nucleotides="{species}/reference/{transcriptome}_longestORFperGene.fasta"
-    script:
-        "scripts/keepLongestORFperGene.py"
+#rule keep_longest_ORF_per_gene:
+    # """
+    # Keep longest open reading frames per gene (as per gene identifier). 
+    # Details on functions and arguments in the python script itself.
+    # """
+    # input:
+    #     "{species}/reference/{transcriptome}.fasta.transdecoder_dir/longest_orfs.pep",
+    #     "{species}/reference/{transcriptome}.fasta",
+    #     "{GENE_ID_TYPE}",
+    #     "{species}/reference/"
+    # output:
+    #     peptides="{species}/reference/{transcriptome}_longestORFperGene.pep",
+    #     nucleotides="{species}/reference/{transcriptome}_longestORFperGene.fasta"
+    # script:
+    #     "scripts/keepLongestORFperGene.py"
 
-rule make_GTF:
-    input:
-        "reference/Trinity_20210112.fasta"
-    output:
-        "results/"
+#rule make_GTF:
+    # input:
+    #     "{species}/reference/{transcriptome}_longestORFperGene.fasta",
+    #     "{species}/reference/{transcriptome}_longestORFperGene.pep",
+    #     {GENE_ID_TYPE},
+    #     "{species}/reference/"
+    # output:
+    #     "{species}/reference/{transcriptome}_longestORFperGene.eggnog.gtf"
+    # script:
+    #     "scripts/makeGTF_emapper.py"
