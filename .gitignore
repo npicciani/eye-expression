@@ -9,6 +9,8 @@ sarsia/rawdata/
 aurelia/rawdata/
 tripedalia/rawdata/
 
+#Reference assemblies
+sarsia/reference/Trinity_20210112.fasta
 
 # C extensions
 *.so
