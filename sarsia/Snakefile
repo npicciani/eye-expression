@@ -10,7 +10,7 @@ rule all: # list all the targets to be generate by in the workflow
         expand("reference/{transcriptome}.transdecoder_dir/longest_orfs.pep", transcriptome=TRANSCRIPTOME),
         expand("reference/{transcriptome}_longestORFperGene.pep", transcriptome=TRANSCRIPTOME),
         expand("reference/{transcriptome}_longestORFperGene.fasta", transcriptome=TRANSCRIPTOME),
-        expand("reference/{transcriptome}_longestORFperGene.eggnog.gtf",transcriptome=TRANSCRIPTOME)
+        expand("reference/{transcriptome}_longestORFperGene.fasta.eggnog.gtf",transcriptome=TRANSCRIPTOME)
 
 rule generate_longest_ORFs:
     """
@@ -45,12 +45,13 @@ rule make_GTF:
         peptides="reference/{transcriptome}_longestORFperGene.pep",
         script="scripts/makeGTF_emapper.py"
     output:
-        "reference/{transcriptome}_longestORFperGene.eggnog.gtf"
+        "reference/{transcriptome}_longestORFperGene.fasta.eggnog.gtf"
     threads: 15
-    conda:
+    conda: # add --use-conda to activate this environment when executing this rule
         "envs/mapping.yaml"
     params:
         time="70:00:00",
         mem="100GB"
     shell:
         "python {input.script} {input.nucleotides} {input.peptides} {GENE_ID_TYPE} reference"
+
