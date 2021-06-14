@@ -30,14 +30,14 @@ gonames_file = "/home/nnp9/local/datasets/go_terms_2019.txt" #GO Terms IDs and t
 
 
 # User inputs
-transcriptomeFile = snakemake.input[0] #longORFs nucleotide file
-proteinFile = snakemake.input[1] #longORFs peptide file
-geneID_type = snakemake.input[2] #type of gene identifier
-outDir = snakemake.input[3] #output directory
+transcriptomeFile = sys.argv[1] #longORFs nucleotide file
+proteinFile = sys.argv[2] #longORFs peptide file
+geneID_type = sys.argv[3] #type of gene identifier
+outDir = sys.argv[4] #output directory
 filename = PurePosixPath(transcriptomeFile).name
 
 # Functionally annotate the ORF sequences with eggNOG-mapper
-subprocess.call([python,emapper,"-i",proteinFile, '-m','diamond', '-o',filename, '--cpu','40','--output_dir',outDir])
+subprocess.call([python,emapper,"-i",proteinFile, '-m','diamond', '-o',filename, '--cpu','15','--output_dir',outDir])
 
 # Generate a gene list and the gene ID to transcript ID map from the original transcriptome file
 geneListFile = outDir + "/" + filename + ".gene_list.txt" #unique list of genes, one gene per line. SHOULD REPRESENT ALL TRANSCRIPTS (NOT JUST PROTEINS)
