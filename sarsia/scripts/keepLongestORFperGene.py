@@ -71,10 +71,10 @@ def keepLongest(ORFs, transcriptomeFile, identifier_type, output_directory):
 	
 	seqs={}
 	currentGeneID=''
-#	longestORFperGenePep = output_directory + "/" + PurePosixPath(transcriptomeFile).stem + "_longestORFperGene.pep" #uncomment for normal script
-	longestORFperGenePep = snakemake.output[0] #snakemake output file included in rule "keep_longest_ORF_per_gene"; comment for normal script
-#	longestORFperGeneFasta = output_directory + "/" + PurePosixPath(transcriptomeFile).stem + "_longestORFperGene.fasta" #uncomment for normal script
-	longestORFperGeneFasta = snakemake.output[1] #snakemake output file included in rule "keep_longest_ORF_per_gene"; comment for normal script
+	longestORFperGenePep = output_directory + "/" + PurePosixPath(transcriptomeFile).name + "_longestORFperGene.pep" #uncomment for normal script
+	longestORFperGeneFasta = output_directory + "/" + PurePosixPath(transcriptomeFile).name + "_longestORFperGene.fasta" #uncomment for normal script
+#	longestORFperGenePep = snakemake.output[0] #snakemake output file included in rule "keep_longest_ORF_per_gene"; comment for normal script
+#	longestORFperGeneFasta = snakemake.output[1] #snakemake output file included in rule "keep_longest_ORF_per_gene"; comment for normal script
 # 	unique = 0 #uncomment for testing
 # 	duplicates = 0 #uncomment for testing
 	
@@ -135,16 +135,16 @@ if __name__ == '__main__':
 	args = parser.parse_args()
 
 # Uncomment this following lines for normal script
-	# outdir = args.o
-	# ORFs = args.p
-	# transcriptomeFile = args.t
-	# idType = args.identifier
+	outdir = args.o
+	ORFs = args.p
+	transcriptomeFile = args.t
+	idType = args.identifier
 
 # Snakemake input arguments; comment for normal script
-	ORFs = snakemake.input[0]
-	transcriptomeFile = snakemake.input[1]
-	idType = snakemake.input[2]
-	outdir = snakemake.input[3]
+	# ORFs = snakemake.input[0]
+	# transcriptomeFile = snakemake.input[1]
+	# idType = snakemake.input[2]
+	# outdir = snakemake.input[3]
 
 	# Select longest ORFs per gene
 	keepLongest(ORFs, transcriptomeFile, idType, output_directory=outdir)

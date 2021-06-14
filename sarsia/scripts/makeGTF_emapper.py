@@ -1,10 +1,9 @@
 #!/usr/bin/env python
-# load python 3 environment
 # -*- coding: utf-8 -*-
 """
 Created by Jacob Musser
 modified by Natasha Picciani
-last modified on June 7, 2021
+last modified on June 14, 2021
 
 Generate annotations with eggNOG mapper, summarize emapper file, generate gene names and go terms for each gene, and produce gtf file
 Usage: makeGTF_emapper.py longORFS.fasta longORFS.pep geneID_type outputDirectory
@@ -35,14 +34,14 @@ transcriptomeFile = snakemake.input[0] #longORFs nucleotide file
 proteinFile = snakemake.input[1] #longORFs peptide file
 geneID_type = snakemake.input[2] #type of gene identifier
 outDir = snakemake.input[3] #output directory
-basename = PurePosixPath(transcriptomeFile).stem
+filename = PurePosixPath(transcriptomeFile).name
 
 # Functionally annotate the ORF sequences with eggNOG-mapper
-subprocess.call([python,emapper,"-i",proteinFile, '-m','diamond', '-o',basename, '--cpu','40','--output_dir',outDir])
+subprocess.call([python,emapper,"-i",proteinFile, '-m','diamond', '-o',filename, '--cpu','40','--output_dir',outDir])
 
 # Generate a gene list and the gene ID to transcript ID map from the original transcriptome file
-geneListFile = outDir + "/" + basename + ".gene_list.txt" #unique list of genes, one gene per line. SHOULD REPRESENT ALL TRANSCRIPTS (NOT JUST PROTEINS)
-transcriptIDtogeneIDFile = outDir + "/" + basename + ".transcriptID_to_gene.txt"
+geneListFile = outDir + "/" + filename + ".gene_list.txt" #unique list of genes, one gene per line. SHOULD REPRESENT ALL TRANSCRIPTS (NOT JUST PROTEINS)
+transcriptIDtogeneIDFile = outDir + "/" + filename + ".transcriptID_to_gene.txt"
 
 if geneID_type == "type_1":
 	searchStr='((comp\d+_c\d+)_seq\d+)'
@@ -66,8 +65,8 @@ with open(transcriptomeFile, 'r') as infile:
 						outfile2.write(transcriptID + '\t' + geneID +'\n')				
 
 # Generate the gene ID to protein ID map from the eggNOG annotation file
-emapperFile = outDir + "/" + basename + ".emapper.annotations"
-proteinIDtogeneIDFile = outDir + "/" + basename + ".proteinID_to_gene.txt" #no header, tab delimited. First column proteinID, second column geneID.
+emapperFile = outDir + "/" + filename + ".emapper.annotations"
+proteinIDtogeneIDFile = outDir + "/" + filename + ".proteinID_to_gene.txt" #no header, tab delimited. First column proteinID, second column geneID.
 
 with open(emapperFile, 'r') as infile:
 	with open(proteinIDtogeneIDFile, 'w') as outfile:
@@ -219,9 +218,9 @@ for gene in geneID_proteinID_dict:
 # Write output files
 
 #goterm file
-goterm_header = basename + "_geneID\tgo_id\tterm"
+goterm_header = filename + "_geneID\tgo_id\tterm"
 goterm_outlist = [goterm_header]
-goterm_outfile_name = outDir + "/" + basename + "_goterms.txt"
+goterm_outfile_name = outDir + "/" + filename + "_goterms.txt"
 
 for gene in gene_goterm_dict:
     goterms = gene_goterm_dict[gene]
@@ -239,7 +238,7 @@ goterm_outfile.close()
 
 
 #gtf file
-gtf_outfile_name = outDir + "/" + basename + ".eggnog.gtf"
+gtf_outfile_name = outDir + "/" + filename + ".eggnog.gtf"
 gtf_outlist = []
 for transcript in transcript_length_dict:
     gene = transcriptID_geneID_dict[transcript]
@@ -252,7 +251,7 @@ gtf_outfile.close()
 
 
 #names files
-names_outfile_name = outDir + "/" + basename + "_gene_final_names.txt"
+names_outfile_name = outDir + "/" + filename + "_gene_final_names.txt"
 names_header = "geneID\tshortname\tlongname\tlongest_protein\tprotein_list"
 names_outlist = [names_header]
 for gene in gene_longest_protein_dict:
