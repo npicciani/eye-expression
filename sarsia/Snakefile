@@ -1,3 +1,5 @@
+#Command Example:
+#snakemake --cluster "sbatch -p pi_dunn --time {params.time} --mem {params.mem} --nodes=1 --ntasks-per-node=15" --jobs 2 --cores 15
 #SPECIES="sarsia"
 #SAMPLES="x,x,x"
 TRANSCRIPTOME="Trinity_20210112.fasta"
@@ -7,7 +9,8 @@ rule all: # list all the targets to be generate by in the workflow
     input:
         expand("reference/{transcriptome}.transdecoder_dir/longest_orfs.pep", transcriptome=TRANSCRIPTOME),
         expand("reference/{transcriptome}_longestORFperGene.pep", transcriptome=TRANSCRIPTOME),
-        expand("reference/{transcriptome}_longestORFperGene.fasta", transcriptome=TRANSCRIPTOME)
+        expand("reference/{transcriptome}_longestORFperGene.fasta", transcriptome=TRANSCRIPTOME),
+        expand("reference/{transcriptome}_longestORFperGene.eggnog.gtf",transcriptome=TRANSCRIPTOME)
 
 rule generate_longest_ORFs:
     """
@@ -43,6 +46,11 @@ rule make_GTF:
         script="scripts/makeGTF_emapper.py"
     output:
         "reference/{transcriptome}_longestORFperGene.eggnog.gtf"
-    threads: 12
+    threads: 15
+    conda:
+        "mapping.yaml"
+    params:
+        time="70:00:00",
+        mem="100GB"
     shell:
         "python {input.script} {input.nucleotides} {input.peptides} {GENE_ID_TYPE} reference"
