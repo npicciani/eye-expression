@@ -48,7 +48,7 @@ rule make_GTF:
         "reference/{transcriptome}_longestORFperGene.eggnog.gtf"
     threads: 15
     conda:
-        "mapping.yaml"
+        "envs/mapping.yaml"
     params:
         time="70:00:00",
         mem="100GB"
