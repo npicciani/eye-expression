@@ -5,12 +5,12 @@ __pycache__/
 
 # Rawdata
 
-sarsia/rawdata/
-aurelia/rawdata/
-tripedalia/rawdata/
+sarsia/resources/rawdata/
+aurelia/resources/rawdata/
+tripedalia/resources/rawdata/
 
-#Reference assemblies
-sarsia/reference/Trinity_20210112.fasta
+# Results (symlink)
+sarsia/results/
 
 # C extensions
 *.so
