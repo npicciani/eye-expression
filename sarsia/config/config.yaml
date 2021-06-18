@@ -3,3 +3,11 @@ samples: config/samples.tsv
 
 # path to file with units description
 units: config/units.tsv
+
+mergeReads:
+  activate: True
+
+reference: Trinity_20210112.fasta
+
+geneIDType:
+  type: type_2
