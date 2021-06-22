@@ -8,11 +8,11 @@ min_version("6.4.1")
 configfile: "config/config.yaml"
  
 # load rules
-include: "rules/general.smk"
-include: "rules/reference.smk"
-include: "rules/align.smk"
+# include: "rules/general.smk"
+# include: "rules/reference.smk"
+# include: "rules/align.smk"
 include: "rules/count.smk"
-include: "rules/stats.smk"
+#include: "rules/stats.smk"
 
 # target rule (list all the targets to be generate by the workflow)
 rule all:
@@ -22,5 +22,4 @@ rule all:
         # expand("results/reference/{transcriptome}_longestORFperGene.fasta", transcriptome=config["reference"]),
         # expand("results/reference/{transcriptome}_longestORFperGene.fasta.eggnog.gtf",transcriptome=config["reference"]),
         # "results/star/index/",
-        # expand("results/start/mapping/{sample}.aligned.out.sam", sample=samples.loc[:,"sample_name"])
-        "results/star/mapping/SA01_FRAL202340683-1a_H33WTDSXY_L4.aligned.out.sam"
+        # expand("results/star/mapping/{sample}/Aligned.out.sam", sample=samples.loc[:,"sample_name"])
