@@ -1,7 +1,7 @@
-sample_name condition
-SA01    tentacles
-SA02    tentacle_bulbs
-SA03    manubrium
-SA04    tentacles
-SA05    tentacle_bulbs
-SA06    manubrium
+sample_name condition unit_name   fq1 fq2
+SA01    tentacles    lane4   SA01_FRAL202340683-1a_H33WTDSXY_L4_1.fq.gz  SA01_FRAL202340683-1a_H33WTDSXY_L4_2.fq.gz       
+SA02    tentacle_bulbs    lane4   SA02_FRAL202340684-1a_H33WTDSXY_L4_1.fq.gz  SA02_FRAL202340684-1a_H33WTDSXY_L4_2.fq.gz
+SA03    manubrium    lane4   SA03_FRAL202340685-1a_H33WTDSXY_L4_1.fq.gz  SA03_FRAL202340685-1a_H33WTDSXY_L4_2.fq.gz
+SA04    tentacles    lane4   SA04_FRAL202340686-1a_concat_1.fq.gz    SA04_FRAL202340686-1a_concat_2.fq.gz
+SA05    tentacle_bulbs    lane4   SA05_FRAL202340687-1a_concat_1.fq.gz    SA05_FRAL202340687-1a_concat_2.fq.gz
+SA06    manubrium    lane4   SA06_FRAL202340688-1a_H33WTDSXY_L4_1.fq.gz  SA06_FRAL202340688-1a_H33WTDSXY_L4_2.fq.gz

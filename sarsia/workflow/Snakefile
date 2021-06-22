@@ -1,70 +1,26 @@
 #Command Example:
-#snakemake --cluster "sbatch -p pi_dunn --time {params.time} --mem {params.mem} --nodes=1 --ntasks-per-node={threads}" --jobs 2 --cores 15
+#snakemake --cluster "sbatch -p pi_dunn --time {params.time} --mem {params.mem} --nodes=1 --ntasks-per-node={threads}" --jobs 2 --cores 25
 
 from snakemake.utils import min_version
 
 min_version("6.4.1")
 
 configfile: "config/config.yaml"
-
+ 
 # load rules
+include: "rules/general.smk"
 include: "rules/reference.smk"
 include: "rules/align.smk"
 include: "rules/count.smk"
 include: "rules/stats.smk"
 
-
-# target rule (list all the targets to be generate by in the workflow)
+# target rule (list all the targets to be generate by the workflow)
 rule all:
     input:
-        expand("results/reference/{transcriptome}.transdecoder_dir/longest_orfs.pep", transcriptome=config["reference"]),
-        expand("results/reference/{transcriptome}_longestORFperGene.pep", transcriptome=config["reference"]),
-        expand("results/reference/{transcriptome}_longestORFperGene.fasta", transcriptome=config["reference"]),
-        expand("results/reference/{transcriptome}_longestORFperGene.fasta.eggnog.gtf",transcriptome=config["reference"]),
-        expand("results/star/index/*"),
-        expand("results/start/mapping/*.sam")
-# moved these rules to a separate smk file in workflow/rules
-#rule generate_longest_ORFs:
-    # """
-    # Infer open reading frames in reference transcriptome.
-    # """
-    # input:
-    #     "reference/{transcriptome}"
-    # output:
-    #     "reference/{transcriptome}.transdecoder_dir/longest_orfs.pep"
-    # shell:
-    #     "TransDecoder.LongOrfs -t {input} --output_dir reference/{wildcards.transcriptome}.transdecoder_dir"
-
-#rule keep_longest_ORF_per_gene:
-    # """
-    # Keep longest open reading frames per gene (as per gene identifier). 
-    # Details on functions and arguments in the python script itself.
-    # """
-    # input:
-    #     longestORFs="reference/{transcriptome}.transdecoder_dir/longest_orfs.pep",
-    #     transcriptomeFasta="reference/{transcriptome}",
-    #     script="scripts/keepLongestORFperGene.py"
-    # output:
-    #     peptides="reference/{transcriptome}_longestORFperGene.pep",
-    #     nucleotides="reference/{transcriptome}_longestORFperGene.fasta"
-    # shell:
-    #     "python {input.script} -p {input.longestORFs} -t "
-    #     "{input.transcriptomeFasta} -identifier {GENE_ID_TYPE} -o reference"
-
-#rule make_GTF:
-
-    # input:
-    #     nucleotides="reference/{transcriptome}_longestORFperGene.fasta",
-    #     peptides="reference/{transcriptome}_longestORFperGene.pep",
-    #     script="scripts/makeGTF_emapper.py"
-    # output:
-    #     "reference/{transcriptome}_longestORFperGene.fasta.eggnog.gtf"
-    # threads: 15
-    # conda: # add --use-conda to activate this environment when executing this rule
-    #     "envs/mapping.yaml"
-    # params:
-    #     time="70:00:00",
-    #     mem="100GB"
-    # shell:
-    #     "python {input.script} {input.nucleotides} {input.peptides} {GENE_ID_TYPE} reference"
-
+        # expand("results/reference/{transcriptome}.transdecoder_dir/longest_orfs.pep", transcriptome=config["reference"]),
+        # expand("results/reference/{transcriptome}_longestORFperGene.pep", transcriptome=config["reference"]),
+        # expand("results/reference/{transcriptome}_longestORFperGene.fasta", transcriptome=config["reference"]),
+        # expand("results/reference/{transcriptome}_longestORFperGene.fasta.eggnog.gtf",transcriptome=config["reference"]),
+        # "results/star/index/",
+        # expand("results/start/mapping/{sample}.aligned.out.sam", sample=samples.loc[:,"sample_name"])
+        "results/star/mapping/SA01_FRAL202340683-1a_H33WTDSXY_L4.aligned.out.sam"

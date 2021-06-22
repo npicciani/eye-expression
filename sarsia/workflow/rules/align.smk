@@ -1,42 +1,29 @@
-import pandas as pd
-
-samples = (
-    pd.read_csv(config["samples"], delim_whitespace=True, dtype={"sample_name": str})
-    .set_index("sample_name", drop=False)
-    .sort_index()
-    )
-def get_reads_input_R1(wildcards):
-    return config["samples"][wildcards.sample]
-
-def get_reads_input_R2(wildcards):
-    return config["samples"][wildcards.sample]
-
-
-rule star_index:
-    input:
-        transcriptome=expand("results/reference/{transcriptome}_longestORFperGene.fasta", transcriptome=config["reference"])        
-    output:
-        "results/star/index"
-    threads: 12
-    log:
-        "logs/{input.transcriptome}_star_index.log"
-    shell:
-        "STAR --runMode genomeGenerate --runThreadN {threads} "
-        "--genomeDir 'results/star/index' "
-        "--genomeFastaFiles 'results/reference/{input.transcriptome}' "
-        "--genomeChrBinNbits 12 "
-        "--genomeSAindexNbases 11"
+# rule star_index:
+#     input:
+#         transcriptomePath=expand("results/reference/{transcriptome}_longestORFperGene.fasta", transcriptome=config["reference"])        
+#     output:
+#         directory("results/star/index/")
+#     threads: 8
+#     log:
+#         logfile=expand("logs/{transcriptome}_longestORFperGene.fasta_star_index.log", transcriptome=config["reference"])
+#     shell:
+#         "STAR --runMode genomeGenerate --runThreadN {threads} "
+#         "--genomeDir 'results/star/index' "
+#         "--genomeFastaFiles '{input.transcriptomePath}' "
+#         "--genomeChrBinNbits 12 "
+#         "--genomeSAindexNbases 11 "
+#         "> {log.logfile}"
 
 rule star_align:
     input:
         index="results/star/index",
-        R1=get_reads_input_R1,
-        R2=get_reads_input_R2        
+        R1= lambda wildcards: "resources/rawdata/{sample}_{read}_1.fq.gz" for sample in config["samples"][wildcards.sample],
+        R2="resources/rawdata/{sample}_{read}_2.fq.gz"
     output:
-        "results/start/mapping/{sample}.aligned.out.sam"
-    threads: 25
-    log:
-        "logs/{sample}_star_align.log"
+       "results/star/mapping/{sample}_{read}.aligned.out.sam"
+    threads: 8
+    # log:
+    #    expand("logs/{sample}_star_align.log", sample=samples.loc[:,"sample_name"])
     shell:
         "STAR --runThreadN {threads} "
         "--genomeDir {input.index} "
