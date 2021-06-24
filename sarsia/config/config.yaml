@@ -1,11 +1,9 @@
 # path to file with sample name and condition
 samples: config/samples.tsv
-
-# path to file with units description
 units: config/units.tsv
 
 mergeReads:
-  activate: True
+  activate: False
 
 reference: Trinity_20210112.fasta
 

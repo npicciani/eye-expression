@@ -1,6 +1,3 @@
-#Command Example:
-#snakemake --cluster "sbatch -p pi_dunn --time {params.time} --mem {params.mem} --nodes=1 --ntasks-per-node={threads}" --jobs 2 --cores 25
-
 from snakemake.utils import min_version
 
 min_version("6.4.1")
@@ -8,18 +5,21 @@ min_version("6.4.1")
 configfile: "config/config.yaml"
  
 # load rules
-# include: "rules/general.smk"
-# include: "rules/reference.smk"
-# include: "rules/align.smk"
+include: "rules/general.smk"
+include: "rules/reference.smk"
+include: "rules/align.smk"
 include: "rules/count.smk"
-#include: "rules/stats.smk"
+include: "rules/stats.smk"
 
-# target rule (list all the targets to be generate by the workflow)
+# target rule
 rule all:
     input:
-        # expand("results/reference/{transcriptome}.transdecoder_dir/longest_orfs.pep", transcriptome=config["reference"]),
-        # expand("results/reference/{transcriptome}_longestORFperGene.pep", transcriptome=config["reference"]),
-        # expand("results/reference/{transcriptome}_longestORFperGene.fasta", transcriptome=config["reference"]),
-        # expand("results/reference/{transcriptome}_longestORFperGene.fasta.eggnog.gtf",transcriptome=config["reference"]),
-        # "results/star/index/",
-        # expand("results/star/mapping/{sample}/Aligned.out.sam", sample=samples.loc[:,"sample_name"])
+        expand("results/reference/{transcriptome}.transdecoder_dir/longest_orfs.pep", transcriptome=config["reference"]),
+        expand("results/reference/{transcriptome}_longestORFperGene.pep", transcriptome=config["reference"]),
+        expand("results/reference/{transcriptome}_longestORFperGene.fasta", transcriptome=config["reference"]),
+        expand("results/reference/{transcriptome}_longestORFperGene.fasta.eggnog.gtf",transcriptome=config["reference"]),
+        "results/star/index/",
+        expand("results/star/mapping/{sample}/Aligned.out.sam", sample=samples.loc[:,"sample_name"]),
+        "results/counts/counts_matrix.txt",
+        "results/busco",
+        expand("results/star/mapping/{sample}/Aligned.out.sam.stats", sample=samples.loc[:,"sample_name"])
