@@ -1,13 +1,13 @@
-rule count_feature:
+rule count_features:
     input:
-        gtf="results/reference/{transcriptome}_longestORFperGene.fasta.eggnog.gtf",
-        reference="results/reference/{transcriptome}_longestORFperGene.fasta",
-        mappedReads="results/star/mapping/{sample}.aligned.out.sam"
+        gtf=expand("results/reference/{transcriptome}_longestORFperGene.fasta.eggnog.gtf", transcriptome=config["reference"]),
+        reference=expand("results/reference/{transcriptome}_longestORFperGene.fasta", transcriptome=config["reference"]),
+        mappedReads=expand("results/star/mapping/{sample}/Aligned.out.sam", sample=samples.loc[:,"sample_name"])
     output:
-        "results/counts/count_matrix.txt"
+        "results/counts/counts_matrix.txt"
     threads: 20
     log: 
-        "logs/count_feature.log"
+        "logs/count_features.log"
     shell:
         "featureCounts -a {input.gtf} "
         "-o {output} -t exon -g gene_id "

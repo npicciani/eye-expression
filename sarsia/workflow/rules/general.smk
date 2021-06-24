@@ -1,5 +1,6 @@
 # load sample information from sample.tsv file (necessary??)
 import pandas as pd
+import os
 
 samples = (
     pd.read_csv(config["samples"], delim_whitespace=True, dtype={"sample_name": str})
@@ -38,3 +39,10 @@ def get_reads_R2(wildcards):
         unit = units.loc[wildcards.sample]
         sample_units = units.loc[wildcards.sample]
         return sample_units["fq2"]
+
+def get_sam(wildcards):
+    resultsPath="results/star/mapping"
+    sampleID=(wildcards.sample)
+    samFilename="Aligned.out.sam"
+    samFilepath=os.path.join(resultsPath, sampleID, samFilename)
+    return samFilepath
