@@ -5,7 +5,6 @@ units: config/units.tsv
 mergeReads:
   activate: False
 
-reference: Trinity_20210112.fasta
+reference: Trinity_20210112.fasta #place file in folder resources
 
-geneIDType:
-  type: type_2
+geneIDType: type_2
