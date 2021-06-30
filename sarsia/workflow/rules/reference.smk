@@ -38,8 +38,8 @@ rule make_GTF:
         expand("results/reference/{transcriptome}_longestORFperGene.fasta.eggnog.gtf", transcriptome=config["reference"])
     threads: 15
     params:
-        time="70:00:00",
-        mem="100GB",
+        time="3:00:00",
+        mem="50GB",
         geneID_type=config["geneIDType"]
     shell:
         "python {input.script} {input.nucleotides} {input.peptides} {params.geneID_type} results/reference"
