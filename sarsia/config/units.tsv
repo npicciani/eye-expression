@@ -1,7 +1,20 @@
-sample_name unit_name   fq1 fq2 sra
-SA01    lane4   resources/rawdata/SA01_FRAL202340683-1a_H33WTDSXY_L4_1.fq.gz  resources/rawdata/SA01_FRAL202340683-1a_H33WTDSXY_L4_2.fq.gz
-SA02    lane4   resources/rawdata/SA02_FRAL202340684-1a_H33WTDSXY_L4_1.fq.gz  resources/rawdata/SA02_FRAL202340684-1a_H33WTDSXY_L4_2.fq.gz
-SA03    lane4   resources/rawdata/SA03_FRAL202340685-1a_H33WTDSXY_L4_1.fq.gz  resources/rawdata/SA03_FRAL202340685-1a_H33WTDSXY_L4_2.fq.gz
-SA04    lane4   resources/rawdata/SA04_FRAL202340686-1a_concat_1.fq.gz    resources/rawdata/SA04_FRAL202340686-1a_concat_2.fq.gz
-SA05    lane4   resources/rawdata/SA05_FRAL202340687-1a_concat_1.fq.gz    resources/rawdata/SA05_FRAL202340687-1a_concat_2.fq.gz
-SA06    lane4   resources/rawdata/SA06_FRAL202340688-1a_H33WTDSXY_L4_1.fq.gz  resources/rawdata/SA06_FRAL202340688-1a_H33WTDSXY_L4_2.fq.gz
+sample_name fq1 fq2 sra
+SA01    resources/rawdata/SA01_FRAL202340683-1a_H33WTDSXY_L4_1.fq.gz  resources/rawdata/SA01_FRAL202340683-1a_H33WTDSXY_L4_2.fq.gz
+SA01    resources/rawdata/SA01_1.fq.gz  resources/rawdata/SA01_2.fq.gz
+
+SA02    resources/rawdata/SA02_FRAL202340684-1a_H33WTDSXY_L4_1.fq.gz  resources/rawdata/SA02_FRAL202340684-1a_H33WTDSXY_L4_2.fq.gz
+SA02    resources/rawdata/SA02_1.fq.gz  resources/rawdata/SA02_2.fq.gz
+
+SA03    resources/rawdata/SA03_FRAL202340685-1a_H33WTDSXY_L4_1.fq.gz  resources/rawdata/SA03_FRAL202340685-1a_H33WTDSXY_L4_2.fq.gz
+SA03    resources/rawdata/SA03_1.fq.gz  resources/rawdata/SA03_2.fq.gz
+
+SA04    resources/rawdata/SA04_FRAL202340686-1a_H33WTDSXY_L4_1.fq.gz    resources/rawdata/SA04_FRAL202340686-1a_H33WTDSXY_L4_2.fq.gz
+SA04    resources/rawdata/SA04_FRAL202340686-1a_H5HK7DSXY_L4_1.fq.gz    resources/rawdata/SA04_FRAL202340686-1a_H5HK7DSXY_L4_2.fq.gz
+SA04    resources/rawdata/SA04_1.fq.gz  resources/rawdata/SA04_2.fq.gz
+
+SA05    resources/rawdata/SA05_FRAL202340687-1a_H33WTDSXY_L4_1.fq.gz    resources/rawdata/SA05_FRAL202340687-1a_H33WTDSXY_L4_2.fq.gz
+SA05    resources/rawdata/SA05_FRAL202340687-1a_H5HK7DSXY_L4_1.fq.gz   resources/rawdata/SA05_FRAL202340687-1a_H5HK7DSXY_L4_2.fq.gz
+SA05    resources/rawdata/SA05_1.fq.gz  resources/rawdata/SA05_2.fq.gz
+
+SA06    resources/rawdata/SA06_FRAL202340688-1a_H33WTDSXY_L4_1.fq.gz  resources/rawdata/SA06_FRAL202340688-1a_H33WTDSXY_L4_2.fq.gz
+SA06    resources/rawdata/SA06_1.fq.gz  resources/rawdata/SA06_2.fq.gz

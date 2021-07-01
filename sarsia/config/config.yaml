@@ -3,7 +3,7 @@ samples: config/samples.tsv
 units: config/units.tsv
 
 mergeReads:
-  activate: False
+  activate: True
 
 reference: Trinity_20210112.fasta #place file in folder resources
 

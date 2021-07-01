@@ -6,20 +6,35 @@ configfile: "config/config.yaml"
  
 # load rules
 include: "rules/general.smk"
-include: "rules/reference.smk"
-include: "rules/align.smk"
-include: "rules/count.smk"
-include: "rules/stats.smk"
+include: "rules/reads.smk"
+# include: "rules/reference.smk"
+# include: "rules/align.smk"
+# include: "rules/count.smk"
+# include: "rules/stats.smk"
 
 # target rule
+# later reduce target files to only those not linked to each other to remove redundancy
+
 rule all:
-    input:
-        expand("results/reference/{transcriptome}.transdecoder_dir/longest_orfs.pep", transcriptome=config["reference"]),
-        expand("results/reference/{transcriptome}_longestORFperGene.pep", transcriptome=config["reference"]),
-        expand("results/reference/{transcriptome}_longestORFperGene.fasta", transcriptome=config["reference"]),
-        expand("results/reference/{transcriptome}_longestORFperGene.fasta.eggnog.gtf",transcriptome=config["reference"]),
-        "results/star/index/",
-        expand("results/star/mapping/{sample}/Aligned.out.sam", sample=samples.loc[:,"sample_name"]),
-        "results/counts/counts_matrix.txt",
-        "results/busco",
-        expand("results/star/mapping/{sample}/Aligned.out.sam.stats", sample=samples.loc[:,"sample_name"])
+    input: expand("results/merged/{sample}_{read}.fq.gz", sample=samples.loc[:,"sample_name"], read=["1","2"])
+        # "results/merged/SA01_1.fq.gz",
+        # "results/merged/SA01_2.fq.gz",
+        # "results/merged/SA02_1.fq.gz",
+        # "results/merged/SA02_2.fq.gz",
+        # "results/merged/SA03_1.fq.gz",
+        # "results/merged/SA03_2.fq.gz",
+        # "results/merged/SA04_1.fq.gz",
+        # "results/merged/SA04_2.fq.gz",
+        # "results/merged/SA05_1.fq.gz",
+        # "results/merged/SA05_2.fq.gz",
+        # "results/merged/SA06_1.fq.gz",
+        # "results/merged/SA06_2.fq.gz"
+        # expand("results/reference/{transcriptome}.transdecoder_dir/longest_orfs.pep", transcriptome=config["reference"]),
+        # expand("results/reference/{transcriptome}_longestORFperGene.pep", transcriptome=config["reference"]),
+        # expand("results/reference/{transcriptome}_longestORFperGene.fasta", transcriptome=config["reference"]),
+        # expand("results/reference/{transcriptome}_longestORFperGene.fasta.eggnog.gtf",transcriptome=config["reference"]),
+        # "results/star/index/",
+        # expand("results/star/mapping/{sample}/Aligned.out.sam", sample=samples.loc[:,"sample_name"]),
+        # "results/counts/counts_matrix.txt",
+        # "results/busco",
+        # expand("results/star/mapping/{sample}/Aligned.out.sam.stats", sample=samples.loc[:,"sample_name"])
