@@ -39,7 +39,7 @@ def get_reads_R1(wildcards):
         # unit = units.loc[wildcards.sample]
     if config["mergeReads"]["activate"]:
         sample=wildcards.sample
-        return "results/merged/{sample}_R1.fq.gz"
+        return "results/merged/{sample}_1.fq.gz"
     sample_units = units.loc[wildcards.sample]
     return sample_units["fq1"]
 
@@ -48,7 +48,7 @@ def get_reads_R2(wildcards):
         # unit = units.loc[wildcards.sample]
     if config["mergeReads"]["activate"]:
         sample=wildcards.sample
-        return "results/merged/{sample}_R2.fq.gz"
+        return "results/merged/{sample}_2.fq.gz"
     sample_units = units.loc[wildcards.sample]
     return sample_units["fq2"]
 
@@ -60,5 +60,5 @@ def get_sam(wildcards):
     return samFilepath
 
 def get_fastqs(wildcards):
-    fq= "fq{}".format(wildcards.read[-1]) #-1 is the very last string character; gives you 1, 2, 3...
+    fq= "fq{}".format(wildcards.read[-1]) #-1 is the very last string character; gives you fq1 and fq2
     return units.loc[wildcards.sample, fq].tolist()
