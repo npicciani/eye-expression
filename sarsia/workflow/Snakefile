@@ -13,7 +13,6 @@ include: "rules/count.smk"
 include: "rules/stats.smk"
 
 # target rule
-# reduce target files to only those not linked to each other to remove redundancy
 
 rule all:
     input: 

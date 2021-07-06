@@ -5,7 +5,7 @@ rule star_index:
         directory("results/star/index")
     threads: 8
     log:
-        logfile=expand("logs/{transcriptome}_longestORFperGene.fasta_star_index.log", transcriptome=config["reference"])
+        logfile=expand("logs/star_index/{transcriptome}_longestORFperGene.fasta_star_index.log", transcriptome=config["reference"])
     shell:
         "STAR --runMode genomeGenerate --runThreadN {threads} "
         "--genomeDir 'results/star/index' "
@@ -22,7 +22,7 @@ rule star_pe_multi:
     output:
         "results/star/mapping/{sample}/Aligned.out.sam"
     log:
-       "logs/{sample}_star_align.log"
+       "logs/star_pe_multi/{sample}_star_align.log"
     params:
         index=lambda wc, input: input.index
     threads: 20
