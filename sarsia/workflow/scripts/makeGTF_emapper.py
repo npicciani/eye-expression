@@ -71,18 +71,14 @@ proteinIDtogeneIDFile = outDir + "/" + filename + ".proteinID_to_gene.txt" #no h
 with open(emapperFile, 'r') as infile:
 	with open(proteinIDtogeneIDFile, 'w') as outfile:
 		for line in infile:
-			
 			if line[0] == "#":
-				continue
-			
+				continue			
 			else:
 				line=line.strip('\n')
 				elementList=line.split('\t')
-				p=re.search(r'((TRINITY_DN\d+_c\d+_g\d+)_i\d+\.p\d)', elementList[0])
-				
+				p=re.search(searchStr, elementList[0])				
 				geneID=p.group(2)
 				proteinID=p.group(1)
-			
 				outfile.write(proteinID+'\t'+geneID+'\n')
 
 emapper_proteinID_field = 0
