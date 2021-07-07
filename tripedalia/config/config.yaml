@@ -1,0 +1,12 @@
+# path to file with sample name and condition
+samples: config/samples.tsv
+units: config/units.tsv
+
+mergeReads:
+  activate: False
+
+reference: 
+  path: resources/reference/GHAQ01.1.fsa_nt.fasta
+  filename: GHAQ01.1.fsa_nt.fasta
+
+geneIDType: type_1 #the type of gene identifier; type_1 = "compXX_cXX_seqXX", type_2="TRINITY_DNXXXXX_cX_gX_iX", type_3="SegXX.XX.XXXX"; rule keep_longest_ORF_per_gene and rule make_GTF
