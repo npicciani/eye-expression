@@ -1,0 +1,20 @@
+sample_name fq1 fq2 sra
+MJ1 resources/rawdata/first_run/MJ1_FRAL202340673-1a_H33WTDSXY_L4_1.fq.gz   resources/rawdata/first_run/MJ1_FRAL202340673-1a_H33WTDSXY_L4_2.fq.gz
+MJ1 resources/rawdata/second_run/MJ1_1.fq.gz    resources/rawdata/second_run/MJ1_2.fq.gz
+MJ4 resources/rawdata/first_run/MJ4_FRAL202340674-1a_H33WTDSXY_L4_1.fq.gz   resources/rawdata/first_run/MJ4_FRAL202340674-1a_H33WTDSXY_L4_2.fq.gz
+MJ4 resources/rawdata/second_run/MJ4_1.fq.gz    resources/rawdata/second_run/MJ4_2.fq.gz
+MJ8 resources/rawdata/first_run/MJ8_FRAL202340675-1a_H33WTDSXY_L4_1.fq.gz   resources/rawdata/first_run/MJ8_FRAL202340675-1a_H33WTDSXY_L4_2.fq.gz
+MJ8 resources/rawdata/second_run/MJ8_1.fq.gz    resources/rawdata/second_run/MJ8_2.fq.gz
+MJ23    resources/rawdata/first_run/MJ23_FRAL202340676-1a_H33WTDSXY_L4_1.fq.gz  resources/rawdata/first_run/MJ23_FRAL202340676-1a_H33WTDSXY_L4_2.fq.gz
+MJ23    resources/rawdata/second_run/MJ23_1.fq.gz   resources/rawdata/second_run/MJ23_2.fq.gz
+MJ26    resources/rawdata/first_run/MJ26_FRAL202340678-1a_H33WTDSXY_L4_1.fq.gz  resources/rawdata/first_run/MJ26_FRAL202340678-1a_H33WTDSXY_L4_2.fq.gz
+MJ26    resources/rawdata/second_run/MJ26_1.fq.gz   resources/rawdata/second_run/MJ26_2.fq.gz
+MJ27    resources/rawdata/first_run/MJ27_FRAL202340679-1a_H33WTDSXY_L4_1.fq.gz  resources/rawdata/first_run/MJ27_FRAL202340679-1a_H33WTDSXY_L4_2.fq.gz
+MJ27    resources/rawdata/second_run/MJ27_1.fq.gz   resources/rawdata/second_run/MJ27_2.fq.gz
+MJ29    resources/rawdata/first_run/MJ29_FRAL202340680-1a_H33WTDSXY_L4_1.fq.gz  resources/rawdata/first_run/MJ29_FRAL202340680-1a_H33WTDSXY_L4_2.fq.gz
+MJ29    resources/rawdata/first_run/MJ29_FRAL202340680-1a_H37FMDSXY_L2_1.fq.gz  resources/rawdata/first_run/MJ29_FRAL202340680-1a_H37FMDSXY_L2_2.fq.gz
+MJ29    resources/rawdata/second_run/MJ29_1.fq.gz   resources/rawdata/second_run/MJ29_2.fq.gz
+MJ32    resources/rawdata/first_run/MJ32_FRAL202340681-1a_H33WTDSXY_L4_1.fq.gz  resources/rawdata/first_run/MJ32_FRAL202340681-1a_H33WTDSXY_L4_2.fq.gz
+MJ32    resources/rawdata/second_run/MJ32_1.fq.gz   resources/rawdata/second_run/MJ32_2.fq.gz
+MJ35    resources/rawdata/first_run/MJ35_FRAL202340682-2a_H5KGWDSXY_L4_1.fq.gz  resources/rawdata/first_run/MJ35_FRAL202340682-2a_H5KGWDSXY_L4_2.fq.gz
+MJ35    resources/rawdata/second_run/MJ35_1.fq.gz   resources/rawdata/second_run/MJ35_2.fq.gz

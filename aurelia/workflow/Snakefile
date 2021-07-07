@@ -1,0 +1,18 @@
+from snakemake.utils import min_version
+
+min_version("6.4.1")
+
+configfile: "config/config.yaml"
+ 
+# load rules
+include: "rules/general.smk"
+include: "rules/reads.smk"
+include: "rules/align.smk"
+include: "rules/count.smk"
+include: "rules/stats.smk"
+
+# target rule
+rule all:
+    input: 
+        "results/counts/counts_matrix.txt",
+        expand("results/star/mapping/{sample}/Aligned.out.sam.stats", sample=samples.loc[:,"sample_name"])

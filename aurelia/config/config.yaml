@@ -1,0 +1,9 @@
+# path to file with sample name and condition
+samples: config/samples.tsv
+units: config/units.tsv
+
+mergeReads:
+  activate: True
+
+reference: resources/reference/ARSv1_genome_assembly.fa #place file in folder resources
+reference_gtf: resources/reference/ARSv1_genome_assembly.gtf #place file in folder resources
