@@ -23,6 +23,6 @@ rule mapping_stats:
     conda: 
         "../envs/samtools.yaml" #samtools=1.12
     output:
-        "results/star/mapping/{sample}/Aligned.out.sam.stats"
+        "results/star/mapping/{accession}/Aligned.out.sam.stats"
     shell:
         "samtools stats --threads {threads} {input} > {output}"

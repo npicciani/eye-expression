@@ -1,6 +1,6 @@
 rule star_index:
     input:
-        transcriptomePath=expand("results/reference/{transcriptome}_longestORFperGene.fasta", transcriptome=config["reference"]["filename"])       
+        transcriptomePath=expand("results/reference/{transcriptome}.fixed_longestORFperGene.fasta", transcriptome=config["reference"]["filename"])       
     output:
         directory("results/star/index")
     threads: 8
@@ -20,9 +20,9 @@ rule star_pe_multi:
         fq2=get_reads_R2,
         index="results/star/index" #include index as input so that snakemake checks that it exists before executing this rule
     output:
-        "results/star/mapping/{sample}/Aligned.out.sam"
+        "results/star/mapping/{accession}/Aligned.out.sam"
     log:
-       "logs/star_pe_multi/{sample}_star_align.log"
+       "logs/star_pe_multi/{accession}_star_align.log"
     params:
         index=lambda wc, input: input.index
     threads: 20

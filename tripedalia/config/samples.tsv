@@ -1,7 +1,5 @@
 sample_name condition
-SA01    tentacles
-SA02    tentacle_bulbs
-SA03    manubrium
-SA04    tentacles
-SA05    tentacle_bulbs
-SA06    manubrium
+TC01    manubrium
+TC02    rhopalia
+TC03    tentacles
+TC04    body

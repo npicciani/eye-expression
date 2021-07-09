@@ -1,4 +1,5 @@
-sample_name fq1 fq2 sra
-TC01
-TC02
-TC03
+sample_name sra
+TC01    SRR8101518
+TC02    SRR8101523
+TC03    SRR8101526
+TC04    SRR8101525

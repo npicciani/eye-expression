@@ -5,6 +5,9 @@ units: config/units.tsv
 mergeReads:
   activate: False
 
+sra:
+  activate: True
+
 reference: 
   path: resources/reference/GHAQ01.1.fsa_nt.fasta
   filename: GHAQ01.1.fsa_nt.fasta

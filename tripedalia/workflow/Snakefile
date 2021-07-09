@@ -8,16 +8,20 @@ configfile: "config/config.yaml"
 include: "rules/general.smk"
 include: "rules/reads.smk"
 include: "rules/reference.smk"
-# include: "rules/align.smk"
-# include: "rules/count.smk"
+include: "rules/align.smk"
+include: "rules/count.smk"
 include: "rules/stats.smk"
 
 # target rule
-
 rule all:
     input: 
         expand("results/reference/{transcriptome}.fixed.transdecoder_dir/longest_orfs.pep", transcriptome=config["reference"]["filename"]),
         expand("results/reference/{transcriptome}.fixed_longestORFperGene.pep", transcriptome=config["reference"]["filename"]),
         expand("results/reference/{transcriptome}.fixed_longestORFperGene.fasta", transcriptome=config["reference"]["filename"]),
         expand("results/reference/{transcriptome}.fixed_longestORFperGene.fasta.eggnog.gtf",transcriptome=config["reference"]["filename"]),
-        "results/busco"
+        "results/busco",
+        expand("resources/rawdata/{accs}_{read}.fastq", accs=units.loc[:,"sra"], read=["1","2"]),
+        "results/star/index/",
+        expand("results/star/mapping/{accession}/Aligned.out.sam", accession=units.loc[:,"sra"]),
+        "results/counts/counts_matrix.txt",
+        expand("results/star/mapping/{accession}/Aligned.out.sam.stats", accession=units.loc[:,"sra"])
