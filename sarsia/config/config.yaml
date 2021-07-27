@@ -5,6 +5,8 @@ units: config/units.tsv
 mergeReads:
   activate: True
 
-reference: Trinity_20210112.fasta #place file in folder resources
-
+reference:
+  path: resources/Trinity_20210112.fasta
+  filename: Trinity_20210112.fasta
+  fileStem: Trinity_20210112
 geneIDType: type_2 #the type of gene identifier; type_1 = "compXX_cXX_seqXX", type_2="TRINITY_DNXXXXX_cX_gX_iX", type_3="SegXX.XX.XXXX"; rule keep_longest_ORF_per_gene and rule make_GTF
