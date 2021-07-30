@@ -12,18 +12,20 @@ include: "rules/align.smk"
 include: "rules/count.smk"
 include: "rules/stats.smk"
 include: "rules/pia.smk"
+include: "rules/diffexp.smk"
 
 # target rule
 rule all:
     input: 
-        expand("results/reference/{transcriptome}.transdecoder_dir/longest_orfs.pep", transcriptome=config["reference"]["filename"]),
-        expand("results/reference/{transcriptome}_longestORFperGene.pep", transcriptome=config["reference"]["filename"]),
-        expand("results/reference/{transcriptome}_longestORFperGene.fasta", transcriptome=config["reference"]["filename"]),
-        expand("results/reference/{transcriptome}_longestORFperGene.fasta.eggnog.gtf",transcriptome=config["reference"]["filename"]),
-        "results/star/index/",
-        expand("results/star/mapping/{sample}/Aligned.out.sam", sample=samples.loc[:,"sample_name"]),
-        "results/counts/counts_matrix.txt",
-        "results/busco",
-        expand("results/star/mapping/{sample}/Aligned.out.sam.stats", sample=samples.loc[:,"sample_name"]),
-        expand("results/merged/{sample}_{read}.fq.gz", sample=samples.loc[:,"sample_name"], read=["1","2"]),
-        expand("results/opsins/{transcriptome}_longestORFperGene.opsins.fasta", transcriptome=config["reference"]["filename"])
+        # expand("results/reference/{transcriptome}.transdecoder_dir/longest_orfs.pep", transcriptome=config["reference"]["filename"]),
+        # expand("results/reference/{transcriptome}_longestORFperGene.pep", transcriptome=config["reference"]["filename"]),
+        # expand("results/reference/{transcriptome}_longestORFperGene.fasta", transcriptome=config["reference"]["filename"]),
+        # expand("results/reference/{transcriptome}_longestORFperGene.fasta.eggnog.gtf",transcriptome=config["reference"]["filename"]),
+        # "results/star/index/",
+        # expand("results/star/mapping/{sample}/Aligned.out.sam", sample=samples.loc[:,"sample_name"]),
+        # "results/counts/counts_matrix.txt",
+        # "results/busco",
+        # expand("results/star/mapping/{sample}/Aligned.out.sam.stats", sample=samples.loc[:,"sample_name"]),
+        # expand("results/merged/{sample}_{read}.fq.gz", sample=samples.loc[:,"sample_name"], read=["1","2"]),
+        # expand("results/opsins/{transcriptome}_longestORFperGene.opsins.fasta", transcriptome=config["reference"]["filename"]),
+        "results/deseq2/counts_normalized.csv"
