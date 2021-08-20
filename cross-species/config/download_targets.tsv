@@ -1,0 +1,39 @@
+species	source	molecule	file	filename	accession
+Danio_rerio	ensembl	peptides	pub/release-104/fasta/danio_rerio/pep/Danio_rerio.GRCz11.pep.all.fa.gz	Danio_rerio.GRCz11.pep.all.fa.gz
+Mus_musculus	ensembl	peptides	pub/release-104/fasta/mus_musculus/pep/Mus_musculus.GRCm39.pep.all.fa.gz	Mus_musculus.GRCm39.pep.all.fa.gz
+Homo_sapiens	ensembl	peptides	pub/release-104/fasta/homo_sapiens/pep/Homo_sapiens.GRCh38.pep.all.fa.gz	Homo_sapiens.GRCh38.pep.all.fa.gz
+Drosophila_melanogaster	ensembl	peptides	pub/release-104/fasta/drosophila_melanogaster/pep/Drosophila_melanogaster.BDGP6.32.pep.all.fa.gz	Drosophila_melanogaster.BDGP6.32.pep.all.fa.gz
+Gallus_gallus	ensembl	peptides	pub/release-104/fasta/gallus_gallus/pep/Gallus_gallus.GRCg6a.pep.all.fa.gz	Gallus_gallus.GRCg6a.pep.all.fa.gz
+Acropora_millepora	tsa	nucleotides	https://sra-download.ncbi.nlm.nih.gov/traces/wgs03/wgs_aux/GH/GU/GHGU01/GHGU01.1.fsa_nt.gz	GHGU01.1.fsa_nt.gz	GHGU00000000
+Alatina_alata	tsa	nucleotides	https://sra-download.ncbi.nlm.nih.gov/traces/wgs03/wgs_aux/GE/UJ/GEUJ01/GEUJ01.1.fsa_nt.gz	GEUJ01.1.fsa_nt.gz	GEUJ00000000
+Aurelia_aurita_K	tsa	nucleotides	https://sra-download.ncbi.nlm.nih.gov/traces/wgs03/wgs_aux/GH/AS/GHAS01/GHAS01.1.fsa_nt.gz	GHAS01.1.fsa_nt.gz	GHAS00000000
+Calvadosia_cruxmelitensis	tsa	nucleotides	https://sra-download.ncbi.nlm.nih.gov/traces/wgs03/wgs_aux/HA/HC/HAHC01/HAHC01.1.fsa_nt.gz	HAHC01.1.fsa_nt.gz	HAHC00000000
+Chironex_yamaguchii	tsa	nucleotides	https://sra-download.ncbi.nlm.nih.gov/traces/wgs03/wgs_aux/GH/AX/GHAX01/GHAX01.1.fsa_nt.gz	GHAX01.1.fsa_nt.gz	GHAX00000000
+Clavularia_sp	tsa	nucleotides	https://sra-download.ncbi.nlm.nih.gov/traces/wgs03/wgs_aux/GH/AW/GHAW01/GHAW01.1.fsa_nt.gz	GHAW01.1.fsa_nt.gz	GHAW00000000
+Copula_sivickisi	tsa	nucleotides	https://sra-download.ncbi.nlm.nih.gov/traces/wgs03/wgs_aux/GH/BG/GHBG01/GHBG01.1.fsa_nt.gz	GHBG01.1.fsa_nt.gz	GHBG00000000
+Craterolophus_convolvulus	tsa	nucleotides	https://sra-download.ncbi.nlm.nih.gov/traces/wgs03/wgs_aux/HA/GZ/HAGZ01/HAGZ01.1.fsa_nt.gz	HAGZ01.1.fsa_nt.gz	HAGZ00000000
+Dynamena_pumila	tsa	nucleotides	https://sra-download.ncbi.nlm.nih.gov/traces/wgs01/wgs_aux/GH/MC/GHMC01/GHMC01.1.fsa_nt.gz	GHMC01.1.fsa_nt.gz	GHMC00000000
+Haliclystus_auricula	tsa	nucleotides	https://sra-download.ncbi.nlm.nih.gov/traces/wgs03/wgs_aux/HA/HA/HAHA01/HAHA01.1.fsa_nt.gz	HAHA01.1.fsa_nt.gz	HAHA00000000
+Haliclystus_sanjuanensis	tsa	nucleotides	https://sra-download.ncbi.nlm.nih.gov/traces/wgs03/wgs_aux/HA/HB/HAHB01/HAHB01.1.fsa_nt.gz	HAHB01.1.fsa_nt.gz	HAHB01000000
+Lucernaria_quadricornis	tsa	nucleotides	https://sra-download.ncbi.nlm.nih.gov/traces/wgs03/wgs_aux/HA/HD/HAHD01/HAHD01.1.fsa_nt.gz	HAHD01.1.fsa_nt.gz	HAHD00000000
+Millepora_alcicornis	tsa	nucleotides	https://sra-download.ncbi.nlm.nih.gov/traces/wgs03/wgs_aux/GF/AS/GFAS01/GFAS01.1.fsa_nt.gz	GFAS01.1.fsa_nt.gz	GFAS00000000
+Millepora_complanata	tsa	nucleotides	https://sra-download.ncbi.nlm.nih.gov/traces/wgs03/wgs_aux/GF/GT/GFGT01/GFGT01.1.fsa_nt.gz	GFGT01.1.fsa_nt.gz	GFGT00000000
+Millepora_squarrosa	tsa	nucleotides	https://sra-download.ncbi.nlm.nih.gov/traces/wgs03/wgs_aux/GF/GU/GFGU01/GFGU01.1.fsa_nt.gz	GFGU01.1.fsa_nt.gz	GFGU00000000
+Morbakka_virulenta	tsa	nucleotides	https://sra-download.ncbi.nlm.nih.gov/traces/wgs03/wgs_aux/GH/AF/GHAF01/GHAF01.1.fsa_nt.gz	GHAF01.1.fsa_nt.gz	GHAF00000000
+Nematostella_vectensis	tsa	nucleotides	https://sra-download.ncbi.nlm.nih.gov/traces/wgs03/wgs_aux/HA/DN/HADN01/HADN01.1.fsa_nt.gz	HADN01.1.fsa_nt.gz	HADN00000000
+Protopalythoa_variabilis	tsa	nucleotides	https://sra-download.ncbi.nlm.nih.gov/traces/wgs03/wgs_aux/GC/VI/GCVI01/GCVI01.1.fsa_nt.gz	GCVI01.1.fsa_nt.gz	GCVI00000000
+Physalia_physalis	tsa	nucleotides	https://sra-download.ncbi.nlm.nih.gov/traces/wgs03/wgs_aux/GH/BB/GHBB01/GHBB01.1.fsa_nt.gz	GHBB01.1.fsa_nt.gz	GHBB00000000
+Podocoryna_carnea	tsa	nucleotides	https://sra-download.ncbi.nlm.nih.gov/traces/wgs03/wgs_aux/GB/EH/GBEH01/GBEH01.1.fsa_nt.gz	GBEH01.1.fsa_nt.gz	GBEH00000000
+Porpita_porpita	tsa	nucleotides	https://sra-download.ncbi.nlm.nih.gov/traces/wgs03/wgs_aux/GH/BA/GHBA01/GHBA01.1.fsa_nt.gz	GHBA01.1.fsa_nt.gz	GHBA00000000
+Rhopilema_esculentum	tsa	nucleotides	https://sra-download.ncbi.nlm.nih.gov/traces/wgs03/wgs_aux/GE/MS/GEMS01/GEMS01.1.fsa_nt.gz	GEMS01.1.fsa_nt.gz	GEMS00000000
+Tripedalia_cystophora_K	tsa	nucleotides	https://sra-download.ncbi.nlm.nih.gov/traces/wgs03/wgs_aux/GH/AQ/GHAQ01/GHAQ01.1.fsa_nt.gz	GHAQ01.1.fsa_nt.gz	GHAQ01000000
+Tripedalia_cystophora_G	tsa	nucleotides	https://sra-download.ncbi.nlm.nih.gov/traces/wgs03/wgs_aux/GG/WE/GGWE01/GGWE01.1.fsa_nt.gz	GGWE01.1.fsa_nt.gz	GGWE01000000
+Turritopsis_sp_SK-2016	tsa	nucleotides	https://sra-download.ncbi.nlm.nih.gov/traces/wgs03/wgs_aux/IA/AF/IAAF01/IAAF01.1.fsa_nt.gz	IAAF01.1.fsa_nt.gz	IAAF01000000
+Velella_velella	tsa	nucleotides	https://sra-download.ncbi.nlm.nih.gov/traces/wgs03/wgs_aux/GH/AZ/GHAZ01/GHAZ01.1.fsa_nt.gz	GHAZ01.1.fsa_nt.gz	GHAZ01000000
+Xenia sp_KK-2018	tsa	nucleotides	https://sra-download.ncbi.nlm.nih.gov/traces/wgs03/wgs_aux/GH/BC/GHBC01/GHBC01.1.fsa_nt.gz	GHBC01.1.fsa_nt.gz	GHBC01000000
+Clytia_hemisphaerica	other	peptides	http://marimba.obs-vlfr.fr/sites/default/files/download/full_nr_align.fasta	full_nr_align.fasta
+Nemopilema_nomurai	other	peptides	ftp://External:tgiuiop@biodisk.org/NNO_Gene_set/NNO.final_gene_set.pep.fa	NNO.final_gene_set.pep.fa
+Hydra_vulgaris	other	peptides	https://research.nhgri.nih.gov/hydra/download/genemodels_proteins/hydra2.0_genemodels.aa.gz	hydra2.0_genemodels.aa.gz
+Hydractinia_symbiolongicarpus	other	nucleotides	https://research.nhgri.nih.gov/hydractinia/download/transcripts/symbio/291-10/Hsym_291-10_strand_specific_transcriptome.okay.tr.fasta.gz	Hsym_291-10_strand_specific_transcriptome.okay.tr.fasta.gz
+Hydractinia_echinata	other	nucleotides	https://research.nhgri.nih.gov/hydractinia/download/transcripts/echinata/Trinity/Hech-trinity.fa.gz	Hech-trinity.fa.gz
+Aurelia_aurita	gdrive	peptides	--load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1hZhGGOOkgAiOUL44XnUm8EwoXN_kczEU' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1hZhGGOOkgAiOUL44XnUm8EwoXN_kczEU" && rm -rf /tmp/cookies.txt
