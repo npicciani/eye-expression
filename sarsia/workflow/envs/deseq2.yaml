@@ -1,0 +1,4 @@
+channels:
+  - bioconda
+dependencies:
+  - bioconductor-deseq2=1.32.0=r41h399db7b_0
