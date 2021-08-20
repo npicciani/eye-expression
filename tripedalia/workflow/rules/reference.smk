@@ -1,6 +1,6 @@
 rule fix_TSA:
     """
-    Edit the headers of TSA nucleotide fasta file. 
+    Edit the headers of TSA nucleotide fasta file.
     From: >GHAQ01000008.1 TSA: Tripedalia cystophora tri_comp79_c0_seq1, transcribed RNA sequence
     To: >comp79_c0_seq1
     """
@@ -27,7 +27,7 @@ rule generate_longest_ORFs:
 
 rule keep_longest_ORF_per_gene:
     """
-    Keep longest open reading frames per gene (as per gene identifier type defined in the config yaml). 
+    Keep longest open reading frames per gene (as per gene identifier type defined in the config yaml).
     Details on functions and arguments in the python script itself.
     """
     input:

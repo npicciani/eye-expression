@@ -13,7 +13,7 @@ rule generate_longest_ORFs:
 
 rule keep_longest_ORF_per_gene:
     """
-    Keep longest open reading frames per gene (as per gene identifier type defined in the config yaml). 
+    Keep longest open reading frames per gene (as per gene identifier type defined in the config yaml).
     Details on functions and arguments in the python script itself.
     """
     input:

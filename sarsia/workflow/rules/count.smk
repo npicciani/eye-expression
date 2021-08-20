@@ -6,7 +6,7 @@ rule count_features:
     output:
         "results/counts/counts_matrix.txt"
     threads: 20
-    log: 
+    log:
         "logs/count_features.log"
     shell:
         "featureCounts -a {input.gtf} "

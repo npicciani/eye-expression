@@ -3,7 +3,7 @@ from snakemake.utils import min_version
 min_version("6.4.1")
 
 configfile: "config/config.yaml"
- 
+
 # load rules
 include: "rules/general.smk"
 include: "rules/reads.smk"
@@ -16,7 +16,7 @@ include: "rules/diffexp.smk"
 
 # target rule
 rule all:
-    input: 
+    input:
         # expand("results/reference/{transcriptome}.transdecoder_dir/longest_orfs.pep", transcriptome=config["reference"]["filename"]),
         # expand("results/reference/{transcriptome}_longestORFperGene.pep", transcriptome=config["reference"]["filename"]),
         # expand("results/reference/{transcriptome}_longestORFperGene.fasta", transcriptome=config["reference"]["filename"]),

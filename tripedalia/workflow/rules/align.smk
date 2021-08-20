@@ -1,6 +1,6 @@
 rule star_index:
     input:
-        transcriptomePath=expand("results/reference/{transcriptome}.fixed_longestORFperGene.fasta", transcriptome=config["reference"]["filename"])       
+        transcriptomePath=expand("results/reference/{transcriptome}.fixed_longestORFperGene.fasta", transcriptome=config["reference"]["filename"])
     output:
         directory("results/star/index")
     threads: 8

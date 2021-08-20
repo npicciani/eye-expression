@@ -1,5 +1,5 @@
 ## RNA-seq Analysis with DESeq2
-## Written by Jan Forster, modified by Natasha Picciani 
+## Written by Jan Forster, modified by Natasha Picciani
 ## Available at https://github.com/snakemake-workflows/rna-seq-star-deseq2
 
 log <- file(snakemake@log[[1]], open="wt")
@@ -30,5 +30,5 @@ dds <- DESeq(dds)
 saveRDS(dds, file=snakemake@output[[1]])
 
 # Export normalized counts to a csv file
-norm.counts <- counts(dds, normalized=TRUE) 
+norm.counts <- counts(dds, normalized=TRUE)
 write.csv(norm.counts, file=snakemake@output[[2]])

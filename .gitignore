@@ -5,12 +5,18 @@ __pycache__/
 
 # Rawdata
 
-sarsia/resources/rawdata/
-aurelia/resources/rawdata/
-tripedalia/resources/rawdata/
+sarsia/resources/rawdata
+aurelia/resources/rawdata
+tripedalia/resources/rawdata
 
 # Results (symlink)
-sarsia/results/
+sarsia/results
+aurelia/results
+tripedalia/results
+
+# Genome
+aurelia/resources/reference
+tripedalia/resources/reference
 
 # C extensions
 *.so

@@ -8,7 +8,7 @@ mergeReads:
 sra:
   activate: True
 
-reference: 
+reference:
   path: resources/reference/GHAQ01.1.fsa_nt.fasta
   filename: GHAQ01.1.fsa_nt.fasta
 

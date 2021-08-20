@@ -4,7 +4,7 @@ rule busco_scores:
     output:
         path=directory("results/busco")
     threads: 20
-    conda: 
+    conda:
         "../envs/busco.yaml" #busco=5.1.3
     log:
         expand("logs/{transcriptome}_longestORFperGene.fasta_busco_scores.log", transcriptome=config["reference"])
@@ -20,7 +20,7 @@ rule mapping_stats:
     input:
         get_sam
     threads: 8
-    conda: 
+    conda:
         "../envs/samtools.yaml" #samtools=1.12
     output:
         "results/star/mapping/{sample}/Aligned.out.sam.stats"
