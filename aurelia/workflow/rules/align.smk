@@ -6,6 +6,8 @@ rule star_index:
     threads: 8
     log:
         logfile="logs/star_index/star_index.log"
+    conda:
+        "../../workflow/envs/star.yaml" #star v2.7.9
     shell:
         "STAR --runMode genomeGenerate --runThreadN {threads} "
         "--genomeDir 'results/star/index' "
