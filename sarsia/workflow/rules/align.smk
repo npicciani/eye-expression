@@ -6,6 +6,8 @@ rule star_index:
     threads: 8
     log:
         logfile=expand("logs/star_index/{transcriptome}_longestORFperGene.fasta_star_index.log", transcriptome=config["reference"]["fileStem"])
+    conda:
+        "../../workflow/envs/star.yaml" #star v2.7.9
     shell:
         "STAR --runMode genomeGenerate --runThreadN {threads} "
         "--genomeDir 'results/star/index' "

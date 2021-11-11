@@ -6,6 +6,8 @@ rule count_features:
     output:
         "results/counts/counts_matrix.txt"
     threads: 20
+    conda:
+        "../../workflow/envs/star.yaml" #subread 2.0.1
     log:
         "logs/count_features/count_features.log"
     shell:

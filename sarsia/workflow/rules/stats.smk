@@ -6,8 +6,6 @@ rule busco_scores:
     threads: 20
     conda:
         "../envs/busco.yaml" #busco=5.1.3
-    log:
-        expand("logs/{transcriptome}_longestORFperGene.fasta_busco_scores.log", transcriptome=config["reference"]["fileStem"])
     params:
         download_path="results/busco/busco_downloads",
         mode="transcriptome",

@@ -8,22 +8,27 @@ rule fix_TSA:
         transcriptomePath=config["reference"]["path"],
         script="workflow/scripts/fastaClean.py"
     output:
-        fixedTranscriptome=expand("{transcriptome}.fixed", transcriptome=config["reference"]["path"])
+        fixedTranscriptome=expand("results/reference/{transcriptome}.fixed", transcriptome=config["reference"]["filename"])
     shell:
-        "python {input.script} {input.transcriptomePath} > {output.fixedTranscriptome}"
+        """
+        mkdir results/reference
+        python {input.script} {input.transcriptomePath} > {output.fixedTranscriptome}
+        """
 
 rule generate_longest_ORFs:
     """
     Infer open reading frames in reference transcriptome.
     """
     input:
-        transcriptomePath=expand("{transcriptome}.fixed", transcriptome=config["reference"]["path"])
+        transcriptomePath=expand("results/reference/{transcriptome}.fixed", transcriptome=config["reference"]["filename"])
     output:
         expand("results/reference/{transcriptome}.fixed.transdecoder_dir/longest_orfs.pep", transcriptome=config["reference"]["filename"])
     params:
-        referenceStem=config["reference"]["filename"]
+        reference=config["reference"]["filename"]
+    conda:
+        "../../workflow/envs/transdecoder.yaml" #transdecoder v5.5.0
     shell:
-        "TransDecoder.LongOrfs -t {input.transcriptomePath} --output_dir results/reference/{params.referenceStem}.transdecoder_dir"
+        "TransDecoder.LongOrfs -t {input.transcriptomePath} --output_dir results/reference/{params.reference}.fixed.transdecoder_dir"
 
 rule keep_longest_ORF_per_gene:
     """
@@ -31,8 +36,8 @@ rule keep_longest_ORF_per_gene:
     Details on functions and arguments in the python script itself.
     """
     input:
-        longestORFs=expand("results/reference/{transcriptome}.transdecoder_dir/longest_orfs.pep", transcriptome=config["reference"]["filename"]),
-        transcriptomePath=expand("{transcriptome}.fixed", transcriptome=config["reference"]["path"]),
+        longestORFs=expand("results/reference/{transcriptome}.fixed.transdecoder_dir/longest_orfs.pep", transcriptome=config["reference"]["filename"]),
+        transcriptomePath=expand("results/reference/{transcriptome}.fixed", transcriptome=config["reference"]["filename"]),
         script="workflow/scripts/keepLongestORFperGene.py"
     output:
         peptides=expand("results/reference/{transcriptome}.fixed_longestORFperGene.pep", transcriptome=config["reference"]["filename"]),
