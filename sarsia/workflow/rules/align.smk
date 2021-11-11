@@ -1,11 +1,11 @@
 rule star_index:
     input:
-        transcriptomePath=expand("results/reference/{transcriptome}_longestORFperGene.fasta", transcriptome=config["reference"])
+        transcriptomePath=expand("results/reference/{transcriptome}_longestORFperGene.fasta", transcriptome=config["reference"]["fileStem"])
     output:
         directory("results/star/index")
     threads: 8
     log:
-        logfile=expand("logs/star_index/{transcriptome}_longestORFperGene.fasta_star_index.log", transcriptome=config["reference"])
+        logfile=expand("logs/star_index/{transcriptome}_longestORFperGene.fasta_star_index.log", transcriptome=config["reference"]["fileStem"])
     shell:
         "STAR --runMode genomeGenerate --runThreadN {threads} "
         "--genomeDir 'results/star/index' "

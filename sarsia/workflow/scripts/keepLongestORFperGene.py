@@ -74,13 +74,13 @@ def keepLongest(ORFs, transcriptomeFile, identifier_type, output_directory):
     longestORFperGenePep = (
         output_directory
         + "/"
-        + PurePosixPath(transcriptomeFile).name
+        + PurePosixPath(transcriptomeFile).stem
         + "_longestORFperGene.pep"
     )  # uncomment for normal script
     longestORFperGeneFasta = (
         output_directory
         + "/"
-        + PurePosixPath(transcriptomeFile).name
+        + PurePosixPath(transcriptomeFile).stem
         + "_longestORFperGene.fasta"
     )  # uncomment for normal script
     # 	longestORFperGenePep = snakemake.output[0] #snakemake output file included in rule "keep_longest_ORF_per_gene"; comment for normal script

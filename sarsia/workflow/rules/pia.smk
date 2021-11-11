@@ -1,9 +1,9 @@
 rule get_opsins:
     input:
         script="workflow/scripts/pia.py",
-        peptides=expand("results/reference/{transcriptome}_longestORFperGene.pep", transcriptome=config["reference"]["filename"])
+        peptides=expand("results/reference/{transcriptome}_longestORFperGene.pep", transcriptome=config["reference"]["fileStem"])
     output:
-        expand("results/opsins/{transcriptome}_longestORFperGene.opsins.fasta", transcriptome=config["reference"]["filename"])
+        expand("results/opsins/{transcriptome}_longestORFperGene.opsins.fasta", transcriptome=config["reference"]["fileStem"])
     conda:
         "../envs/pia.yaml"
     threads: 8

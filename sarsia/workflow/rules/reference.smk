@@ -5,9 +5,9 @@ rule generate_longest_ORFs:
     input:
         transcriptomePath=expand("resources/{transcriptome}", transcriptome=config["reference"]["filename"]),
     output:
-        expand("results/reference/{transcriptome}.transdecoder_dir/longest_orfs.pep", transcriptome=config["reference"]["filename"])
+        expand("results/reference/{transcriptome}.transdecoder_dir/longest_orfs.pep", transcriptome=config["reference"]["fileStem"])
     params:
-        referenceFilename=expand("{transcriptome}", transcriptome=config["reference"]["filename"])
+        referenceFilename=expand("{transcriptome}", transcriptome=config["reference"]["fileStem"])
     shell:
         "TransDecoder.LongOrfs -t {input.transcriptomePath} --output_dir results/reference/{params.referenceFilename}.transdecoder_dir"
 
@@ -17,12 +17,12 @@ rule keep_longest_ORF_per_gene:
     Details on functions and arguments in the python script itself.
     """
     input:
-        longestORFs=expand("results/reference/{transcriptome}.transdecoder_dir/longest_orfs.pep", transcriptome=config["reference"]["filename"]),
+        longestORFs=expand("results/reference/{transcriptome}.transdecoder_dir/longest_orfs.pep", transcriptome=config["reference"]["fileStem"]),
         transcriptomePath=expand("resources/{transcriptome}", transcriptome=config["reference"]["filename"]),
         script="workflow/scripts/keepLongestORFperGene.py"
     output:
-        peptides=expand("results/reference/{transcriptome}_longestORFperGene.pep", transcriptome=config["reference"]["filename"]),
-        nucleotides=expand("results/reference/{transcriptome}_longestORFperGene.fasta", transcriptome=config["reference"]["filename"])
+        peptides=expand("results/reference/{transcriptome}_longestORFperGene.pep", transcriptome=config["reference"]["fileStem"]),
+        nucleotides=expand("results/reference/{transcriptome}_longestORFperGene.fasta", transcriptome=config["reference"]["fileStem"])
     params:
         geneID_type=config["geneIDType"]
     shell:
@@ -31,11 +31,11 @@ rule keep_longest_ORF_per_gene:
 
 rule make_GTF:
     input:
-        nucleotides=expand("results/reference/{transcriptome}_longestORFperGene.fasta", transcriptome=config["reference"]["filename"]),
-        peptides=expand("results/reference/{transcriptome}_longestORFperGene.pep", transcriptome=config["reference"]["filename"]),
+        nucleotides=expand("results/reference/{transcriptome}_longestORFperGene.fasta", transcriptome=config["reference"]["fileStem"]),
+        peptides=expand("results/reference/{transcriptome}_longestORFperGene.pep", transcriptome=config["reference"]["fileStem"]),
         script="workflow/scripts/makeGTF_emapper.py"
     output:
-        expand("results/reference/{transcriptome}_longestORFperGene.fasta.eggnog.gtf", transcriptome=config["reference"]["filename"])
+        expand("results/reference/{transcriptome}_longestORFperGene.fasta.eggnog.gtf", transcriptome=config["reference"]["fileStem"])
     threads: 15
     params:
         time="3:00:00",
