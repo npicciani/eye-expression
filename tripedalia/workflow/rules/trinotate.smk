@@ -5,6 +5,7 @@ rule trinotate_dbs:
     output:
         "results/trinotate/Pfam-A.hmm",
         "results/trinotate/uniprot_sprot.pep"
+    threads: 12
     conda:
         "../envs/trinotate.yaml"
     params:
@@ -29,10 +30,10 @@ rule trinotate_hits:
     input:
         "results/trinotate/uniprot_sprot.pep",
         "results/trinotate/Pfam-A.hmm",
-        fastafile = expand("results/reference/{transcriptome}_longestORFperGene.fasta", transcriptome=config["reference"]["fileStem"]),
-        peptidefile = expand("results/reference/{transcriptome}_longestORFperGene.pep", transcriptome=config["reference"]["fileStem"]),
-        transdecoder_peptidefile = expand("results/reference/{transcriptome}.transdecoder_dir/longest_orfs.pep", transcriptome=config["reference"]["fileStem"]),
-        geneTranscript_map = expand("results/reference/{transcriptome}_longestORFperGene.fasta.geneID_to_transcript.txt", transcriptome=config["reference"]["fileStem"]),
+        fastafile = expand("results/reference/{transcriptome}.fixed_longestORFperGene.fasta", transcriptome=config["reference"]["filename"]),
+        peptidefile = expand("results/reference/{transcriptome}.fixed_longestORFperGene.pep", transcriptome=config["reference"]["filename"]),
+        transdecoder_peptidefile = expand("results/reference/{transcriptome}.fixed.transdecoder_dir/longest_orfs.pep", transcriptome=config["reference"]["filename"]),
+        geneTranscript_map = expand("results/reference/{transcriptome}.fixed_longestORFperGene.fasta.geneID_to_transcript.txt", transcriptome=config["reference"]["filename"]),
     output:
         "results/trinotate/blastx.outfmt6",
         "results/trinotate/blastp.outfmt6",
@@ -78,7 +79,6 @@ rule trinotate_hits:
         Trinotate Trinotate.sqlite LOAD_signalp signalp.out
         Trinotate Trinotate.sqlite report > trinotate_annotation_report.xls
         """
-
 rule trinotate_extract:
     """
     Extract GO terms assigned to each transcript
@@ -95,7 +95,7 @@ rule trinotate_extract:
     shell:
         """
         mkdir {params.conda_folder}/obo
-        wget https://github.com/Trinotate/Trinotate/blob/master/PerlLib/obo/go-basic.obo.gz -P {params.conda_folder}/obo #fix conda installation bug
+        wget https://github.com/Trinotate/Trinotate/blob/master/PerlLib/obo/go-basic.obo.gz -P {params.conda_folder}/obo
 
         cd results/trinotate
         # Extract GO annotations

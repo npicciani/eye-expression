@@ -1,0 +1,12 @@
+name: /gpfs/ysm/project/dunn/nnp9/conda_envs/trinotate3
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  - blast=2.12.0=pl5262h3289130_0
+  - bzip2=1.0.8=h7f98852_4
+  - hmmer=3.3.2=h1b792b2_1
+  - transdecoder=5.5.0=pl526_1
+  - trinotate=3.2.2=pl5262hdfd78af_0
+prefix: /gpfs/ysm/project/dunn/nnp9/conda_envs/trinotate3

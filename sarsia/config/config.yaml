@@ -14,3 +14,8 @@ geneIDType: type_2 #the type of gene identifier; type_1 = "compXX_cXX_seqXX", ty
 
 diffexp:
   model: ~condition
+
+# Install according to https://github.com/Trinotate/Trinotate.github.io/wiki/Software-installation-and-data-required
+rnammer: ~/local/bin/rnammer-1.2/rnammer #path to rnammer
+tmhmm: ~/local/bin/tmhmm-2.0c/bin/tmhmm #path to tmhmm
+signalp: ~/local/bin/signalp-4.1/signalp #path to signalp

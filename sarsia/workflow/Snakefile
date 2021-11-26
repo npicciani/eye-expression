@@ -13,13 +13,17 @@ include: "rules/count.smk"
 include: "rules/stats.smk"
 include: "rules/pia.smk"
 include: "rules/diffexp.smk"
+include: "rules/trinotate.smk"
 
 # target rule
 rule all:
     input:
         expand("results/star/mapping/{sample}/Aligned.out.sam", sample=samples.loc[:,"sample_name"]),
-        "results/counts/counts_matrix.txt",
+        # "results/counts/counts_matrix.txt",
         "results/busco",
         expand("results/star/mapping/{sample}/Aligned.out.sam.stats", sample=samples.loc[:,"sample_name"]),
         expand("results/opsins/{transcriptome}_longestORFperGene.opsins.fasta", transcriptome=config["reference"]["fileStem"]),
+        expand("results/reference/{transcriptome}_longestORFperGene.fasta.geneID_to_transcript.txt", transcriptome=config["reference"]["fileStem"]),
+        "results/trinotate/trinotate_annotation_report.xls",
+        "results/trinotate/go_annotations.txt"
         # "results/deseq2/counts_normalized.csv"
