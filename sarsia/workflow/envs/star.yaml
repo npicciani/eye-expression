@@ -1,0 +1,15 @@
+name: /gpfs/ysm/project/dunn/nnp9/conda_envs/star
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  - _libgcc_mutex=0.1=conda_forge
+  - _openmp_mutex=4.5=1_gnu
+  - libgcc-ng=11.2.0=h1d223b6_11
+  - libgomp=11.2.0=h1d223b6_11
+  - libzlib=1.2.11=h36c2ea0_1013
+  - star=2.7.9a=h9ee0642_0
+  - subread=2.0.1=h5bf99c6_1
+  - zlib=1.2.11=h36c2ea0_1013
+prefix: /gpfs/ysm/project/dunn/nnp9/conda_envs/star
