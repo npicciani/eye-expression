@@ -2,6 +2,7 @@
 samples: config/samples.tsv
 units: config/units.tsv
 
+# Merge reads from two sequencing runs
 mergeReads:
   activate: True
 
@@ -11,9 +12,6 @@ reference:
   fileStem: Trinity_20210112
 
 geneIDType: type_2 #the type of gene identifier; type_1 = "compXX_cXX_seqXX", type_2="TRINITY_DNXXXXX_cX_gX_iX", type_3="SegXX.XX.XXXX"; rule keep_longest_ORF_per_gene and rule make_GTF
-
-diffexp:
-  model: ~condition
 
 # Install according to https://github.com/Trinotate/Trinotate.github.io/wiki/Software-installation-and-data-required
 rnammer: ~/local/bin/rnammer-1.2/rnammer #path to rnammer
