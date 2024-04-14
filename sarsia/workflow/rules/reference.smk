@@ -8,6 +8,8 @@ rule generate_longest_ORFs:
         expand("results/reference/{transcriptome}.transdecoder_dir/longest_orfs.pep", transcriptome=config["reference"]["fileStem"])
     params:
         referenceFilename=expand("{transcriptome}", transcriptome=config["reference"]["fileStem"])
+    conda:
+        "../../workflow/envs/transdecoder.yaml" #transdecoder v5.5.0
     shell:
         "TransDecoder.LongOrfs -t {input.transcriptomePath} --output_dir results/reference/{params.referenceFilename}.transdecoder_dir"
 
@@ -35,11 +37,23 @@ rule make_GTF:
         peptides=expand("results/reference/{transcriptome}_longestORFperGene.pep", transcriptome=config["reference"]["fileStem"]),
         script="workflow/scripts/makeGTF_emapper.py"
     output:
-        expand("results/reference/{transcriptome}_longestORFperGene.fasta.eggnog.gtf", transcriptome=config["reference"]["fileStem"])
+        expand("results/reference/{transcriptome}_longestORFperGene.fasta.eggnog.gtf", transcriptome=config["reference"]["fileStem"]),
+        expand("results/reference/{transcriptome}_longestORFperGene.fasta.geneID_to_transcript.txt", transcriptome=config["reference"]["fileStem"])
     threads: 15
+    conda:
+    	"../../workflow/envs/emapper.yaml"
     params:
-        time="3:00:00",
+        time="5:00:00",
         mem="50GB",
-        geneID_type=config["geneIDType"]
+        geneID_type=config["geneIDType"],
+        emapper="$CONDA_PREFIX/bin/emapper.py",
+        python="$CONDA_PREFIX/bin/python",
+        gonames_file="resources/go_terms_2019.txt",
+        data_folder="$CONDA_PREFIX/lib/python3.7/site-packages/data",
+        download_eggnog_databases="$CONDA_PREFIX/bin/download_eggnog_data.py"
     shell:
-        "python {input.script} {input.nucleotides} {input.peptides} {params.geneID_type} results/reference"
+        """
+        mkdir {params.data_folder}
+        python {params.download_eggnog_databases} -y
+        python {input.script} {input.nucleotides} {input.peptides} {params.geneID_type} results/reference {params.python} {params.emapper} {params.gonames_file}
+        """
