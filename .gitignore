@@ -17,6 +17,7 @@ tripedalia/results
 # Genome
 aurelia/resources/reference
 tripedalia/resources/reference
+sarsia/resources/Trinity_20210112.fasta
 
 # C extensions
 *.so
