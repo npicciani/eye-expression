@@ -9,9 +9,9 @@ rule count_features:
     log:
         "logs/count_features/count_features.log"
     conda:
-        "../../workflow/envs/star.yaml" #subread 2.0.1
+        "../envs/star.yaml" #subread 2.0.1
     shell:
-        "featureCounts -a {input.gtf} "
+        "featureCounts -p -a {input.gtf} "
         "-o {output} -t exon -g gene_id "
         "-G {input.reference} "
         "-T {threads} {input.mappedReads}"
