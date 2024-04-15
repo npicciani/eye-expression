@@ -3,11 +3,11 @@ rule generate_longest_ORFs:
     Infer open reading frames in reference transcriptome.
     """
     input:
-        transcriptomePath=expand("resources/{transcriptome}", transcriptome=config["reference"]["filename"]),
+        transcriptomePath=expand("{transcriptome_path}", transcriptome=config["reference"]["path"]),
     output:
-        expand("results/reference/{transcriptome}.transdecoder_dir/longest_orfs.pep", transcriptome=config["reference"]["fileStem"])
+        expand("results/reference/{transcriptome}.transdecoder_dir/longest_orfs.pep", transcriptome=config["reference"]["filestem"])
     params:
-        referenceFilename=expand("{transcriptome}", transcriptome=config["reference"]["fileStem"])
+        referenceFilename=expand("{transcriptome}", transcriptome=config["reference"]["filestem"])
     conda:
         "../../workflow/envs/transdecoder.yaml" #transdecoder v5.5.0
     shell:
@@ -19,12 +19,12 @@ rule keep_longest_ORF_per_gene:
     Details on functions and arguments in the python script itself.
     """
     input:
-        longestORFs=expand("results/reference/{transcriptome}.transdecoder_dir/longest_orfs.pep", transcriptome=config["reference"]["fileStem"]),
-        transcriptomePath=expand("resources/{transcriptome}", transcriptome=config["reference"]["filename"]),
+        longestORFs=expand("results/reference/{transcriptome}.transdecoder_dir/longest_orfs.pep", transcriptome=config["reference"]["filestem"]),
+        transcriptomePath=expand("{transcriptome_path}", transcriptome=config["reference"]["path"]),
         script="workflow/scripts/keepLongestORFperGene.py"
     output:
-        peptides=expand("results/reference/{transcriptome}_longestORFperGene.pep", transcriptome=config["reference"]["fileStem"]),
-        nucleotides=expand("results/reference/{transcriptome}_longestORFperGene.fasta", transcriptome=config["reference"]["fileStem"])
+        peptides=expand("results/reference/{transcriptome}_longestORFperGene.pep", transcriptome=config["reference"]["filestem"]),
+        nucleotides=expand("results/reference/{transcriptome}_longestORFperGene.fasta", transcriptome=config["reference"]["filestem"])
     params:
         geneID_type=config["geneIDType"]
     shell:
@@ -33,12 +33,12 @@ rule keep_longest_ORF_per_gene:
 
 rule make_GTF:
     input:
-        nucleotides=expand("results/reference/{transcriptome}_longestORFperGene.fasta", transcriptome=config["reference"]["fileStem"]),
-        peptides=expand("results/reference/{transcriptome}_longestORFperGene.pep", transcriptome=config["reference"]["fileStem"]),
+        nucleotides=expand("results/reference/{transcriptome}_longestORFperGene.fasta", transcriptome=config["reference"]["filestem"]),
+        peptides=expand("results/reference/{transcriptome}_longestORFperGene.pep", transcriptome=config["reference"]["filestem"]),
         script="workflow/scripts/makeGTF_emapper.py"
     output:
-        expand("results/reference/{transcriptome}_longestORFperGene.fasta.eggnog.gtf", transcriptome=config["reference"]["fileStem"]),
-        expand("results/reference/{transcriptome}_longestORFperGene.fasta.geneID_to_transcript.txt", transcriptome=config["reference"]["fileStem"])
+        expand("results/reference/{transcriptome}_longestORFperGene.fasta.eggnog.gtf", transcriptome=config["reference"]["filestem"]),
+        expand("results/reference/{transcriptome}_longestORFperGene.fasta.geneID_to_transcript.txt", transcriptome=config["reference"]["filestem"])
     threads: 15
     conda:
     	"../../workflow/envs/emapper.yaml"
