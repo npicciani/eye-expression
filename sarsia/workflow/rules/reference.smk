@@ -3,7 +3,7 @@ rule generate_longest_ORFs:
     Infer open reading frames in reference transcriptome.
     """
     input:
-        transcriptomePath=expand("{transcriptome_path}", transcriptome=config["reference"]["path"]),
+        transcriptomePath=expand("{transcriptome_path}", transcriptome_path=config["reference"]["path"]),
     output:
         expand("results/reference/{transcriptome}.transdecoder_dir/longest_orfs.pep", transcriptome=config["reference"]["filestem"])
     params:
@@ -20,7 +20,7 @@ rule keep_longest_ORF_per_gene:
     """
     input:
         longestORFs=expand("results/reference/{transcriptome}.transdecoder_dir/longest_orfs.pep", transcriptome=config["reference"]["filestem"]),
-        transcriptomePath=expand("{transcriptome_path}", transcriptome=config["reference"]["path"]),
+        transcriptomePath=expand("{transcriptome_path}", transcriptome_path=config["reference"]["path"]),
         script="workflow/scripts/keepLongestORFperGene.py"
     output:
         peptides=expand("results/reference/{transcriptome}_longestORFperGene.pep", transcriptome=config["reference"]["filestem"]),
