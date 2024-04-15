@@ -1,6 +1,6 @@
 rule fix_TSA:
     """
-    Edit the headers of TSA nucleotide fasta file.
+    Edit the headers from TSA nucleotide fasta file.
     From: >GHAQ01000008.1 TSA: Tripedalia cystophora tri_comp79_c0_seq1, transcribed RNA sequence
     To: >comp79_c0_seq1
     """
@@ -54,11 +54,23 @@ rule make_GTF:
         peptides=expand("results/reference/{transcriptome}.fixed_longestORFperGene.pep", transcriptome=config["reference"]["filename"]),
         script="workflow/scripts/makeGTF_emapper.py"
     output:
-        expand("results/reference/{transcriptome}.fixed_longestORFperGene.fasta.eggnog.gtf", transcriptome=config["reference"]["filename"])
+        expand("results/reference/{transcriptome}.fixed_longestORFperGene.fasta.eggnog.gtf", transcriptome=config["reference"]["filename"]),
+        geneTranscript_map = expand("results/reference/{transcriptome}.fixed_longestORFperGene.fasta.geneID_to_transcript.txt", transcriptome=config["reference"]["filename"])
     threads: 15
+    conda:
+        "../envs/emapper.yaml"
     params:
-        time="3:00:00",
+        time="5:00:00",
         mem="50GB",
-        geneID_type=config["geneIDType"]
+        geneID_type=config["geneIDType"],
+        emapper="$CONDA_PREFIX/bin/emapper.py",
+        python="$CONDA_PREFIX/bin/python",
+        gonames_file="resources/go_terms_2019.txt",
+        data_folder="$CONDA_PREFIX/lib/python3.7/site-packages/data",
+        download_eggnog_databases="$CONDA_PREFIX/bin/download_eggnog_data.py"
     shell:
-        "python {input.script} {input.nucleotides} {input.peptides} {params.geneID_type} results/reference"
+        """
+        mkdir {params.data_folder}
+        python {params.download_eggnog_databases} -y
+        python {input.script} {input.nucleotides} {input.peptides} {params.geneID_type} results/reference {params.python} {params.emapper} {params.gonames_file}
+        """

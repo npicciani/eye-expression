@@ -3,7 +3,6 @@
 """
 Created by Jacob Musser
 modified by Natasha Picciani
-last modified on Apr 14, 2024
 
 Generate annotations with eggNOG mapper, summarize emapper file,
 generate gene names and go terms for each gene, and produce gtf file
@@ -20,14 +19,6 @@ import subprocess
 from pathlib import PurePosixPath
 import sys
 from Bio import SeqIO
-
-# Path to programs and files
-emapper = "/gpfs/ysm/project/dunn/nnp9/conda_envs/emapper/bin/emapper.py"  # path to eggNOG mapper 2.0.6
-python = (
-    "/gpfs/ysm/project/dunn/nnp9/conda_envs/emapper/bin/python"  # path to python 3.7
-)
-gonames_file = "/home/nnp9/local/datasets/go_terms_2019.txt"  # GO Terms IDs and their corresponding names from 2019 GO release
-
 
 # User inputs
 transcriptomeFile = sys.argv[1]  # longORFs nucleotide file
