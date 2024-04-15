@@ -7,7 +7,7 @@ mergeReads:
   activate: True
 
 reference:
-  path: resources/Trinity_20210112.fasta
+  path: resources/reference/Trinity_20210112.fasta
   filename: Trinity_20210112.fasta
   fileStem: Trinity_20210112
 

@@ -14,10 +14,10 @@ sarsia/results
 aurelia/results
 tripedalia/results
 
-# Genome
+# References
 aurelia/resources/reference
-tripedalia/resources/reference
-sarsia/resources/Trinity_20210112.fasta
+tripedalia/resources/reference/GHAQ01.1.fsa_nt.fasta
+sarsia/resources/reference/Trinity_20210112.fasta
 
 # C extensions
 *.so
