@@ -1,11 +1,11 @@
 rule star_index:
     input:
-        transcriptomePath=expand("results/reference/{transcriptome}_longestORFperGene.fasta", transcriptome=config["reference"]["fileStem"])
+        transcriptomePath=expand("results/reference/{transcriptome}_longestORFperGene.fasta", transcriptome=config["reference"]["filestem"])
     output:
         directory("results/star/index")
     threads: 8
     log:
-        logfile=expand("logs/star_index/{transcriptome}_longestORFperGene.fasta_star_index.log", transcriptome=config["reference"]["fileStem"])
+        logfile=expand("logs/star_index/{transcriptome}_longestORFperGene.fasta_star_index.log", transcriptome=config["reference"]["filestem"])
     conda:
         "../../workflow/envs/star.yaml" #star v2.7.9
     shell:

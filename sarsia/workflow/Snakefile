@@ -21,7 +21,7 @@ rule all:
         "results/counts/counts_matrix.txt",
         "results/busco",
         expand("results/star/mapping/{sample}/Aligned.out.sam.stats", sample=samples.loc[:,"sample_name"]),
-        expand("results/opsins/{transcriptome}_longestORFperGene.opsins.fasta", transcriptome=config["reference"]["fileStem"]),
-        expand("results/reference/{transcriptome}_longestORFperGene.fasta.geneID_to_transcript.txt", transcriptome=config["reference"]["fileStem"]),
+        expand("results/opsins/{transcriptome}_longestORFperGene.opsins.fasta", transcriptome=config["reference"]["filestem"]),
+        expand("results/reference/{transcriptome}_longestORFperGene.fasta.geneID_to_transcript.txt", transcriptome=config["reference"]["filestem"]),
         "results/trinotate/trinotate_annotation_report.xls",
         "results/trinotate/go_annotations.txt"

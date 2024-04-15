@@ -1,7 +1,7 @@
 rule count_features:
     input:
-        gtf=expand("results/reference/{transcriptome}_longestORFperGene.fasta.eggnog.gtf", transcriptome=config["reference"]["fileStem"]),
-        reference=expand("results/reference/{transcriptome}_longestORFperGene.fasta", transcriptome=config["reference"]["fileStem"]),
+        gtf=expand("results/reference/{transcriptome}_longestORFperGene.fasta.eggnog.gtf", transcriptome=config["reference"]["filestem"]),
+        reference=expand("results/reference/{transcriptome}_longestORFperGene.fasta", transcriptome=config["reference"]["filestem"]),
         mappedReads=expand("results/star/mapping/{sample}/Aligned.out.sam", sample=samples.loc[:,"sample_name"])
     output:
         "results/counts/counts_matrix.txt"
