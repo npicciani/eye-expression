@@ -18,6 +18,7 @@ import re
 import subprocess
 from pathlib import PurePosixPath
 import sys
+import os
 from Bio import SeqIO
 
 # User inputs
@@ -30,24 +31,28 @@ emapper = sys.argv[6]
 gonames_file = sys.argv[7]
 
 filename = PurePosixPath(transcriptomeFile).name
+emapperFile = outDir + "/" + filename + ".emapper.annotations"
 
 # Functionally annotate the ORF sequences with eggNOG-mapper
-subprocess.call(
-    [
-        python,
-        emapper,
-        "-i",
-        proteinFile,
-        "-m",
-        "diamond",
-        "-o",
-        filename,
-        "--cpu",
-        "15",
-        "--output_dir",
-        outDir,
-    ]
-)
+if os.path.exists(emapperFile):
+    print("Emapper annotation already exist")
+else:
+    subprocess.call(
+        [
+            python,
+            emapper,
+            "-i",
+            proteinFile,
+            "-m",
+            "diamond",
+            "-o",
+            filename,
+            "--cpu",
+            "15",
+            "--output_dir",
+            outDir,
+        ]
+    )
 
 # Generate a gene list and the gene ID/transcript ID map from the original transcriptome file
 geneListFile = (
@@ -58,13 +63,16 @@ geneIDtotranscriptIDFile = outDir + "/" + filename + ".geneID_to_transcript.txt"
 
 if geneID_type == "type_1":
     searchStr = "((comp\d+_c\d+)_seq\d+)"
+    protein_searchStr = "((comp\d+_c\d+)_seq\d+.p\d)"
 if geneID_type == "type_2":
     searchStr = "((TRINITY_DN\d+_c\d+_g\d+)_i\d+)"
     protein_searchStr = "((TRINITY_DN\d+_c\d+_g\d+)_i\d+.p\d)"
 if geneID_type == "type_3":
     searchStr = "((Seg\d+)\..+)"
+    protein_searchStr = "((Seg\d+)\..+.p\d)"
 if geneID_type == "type_4":
     searchStr = "(t\d+aep.+(DN.+g.+)[_it]\d+)"
+    protein_searchStr = "(t\d+aep.+(DN.+g.+)[_it]\d+.p\d)"
 
 with open(transcriptomeFile, "r") as infile:
     with open(geneListFile, "w") as outfile1:
@@ -81,7 +89,6 @@ with open(transcriptomeFile, "r") as infile:
                         outfile3.write(geneID + "\t" + transcriptID + "\n")
 
 # Generate the gene ID to protein ID map from the eggNOG annotation file
-emapperFile = outDir + "/" + filename + ".emapper.annotations"
 proteinIDtogeneIDFile = (
     outDir + "/" + filename + ".proteinID_to_gene.txt"
 )  # no header, tab delimited. First column proteinID, second column geneID.
