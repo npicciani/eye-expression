@@ -35,7 +35,7 @@ emapperFile = outDir + "/" + filename + ".emapper.annotations"
 
 # Functionally annotate the ORF sequences with eggNOG-mapper
 if os.path.exists(emapperFile):
-    print("Emapper annotation already exist")
+    print("Emapper annotations already exist")
 else:
     subprocess.call(
         [
