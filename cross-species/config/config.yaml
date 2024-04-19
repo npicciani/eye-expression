@@ -1,2 +1,2 @@
-# path to file with accession numbers and paths for public data download
+# Path to accession numbers and links for public data download
 targets: config/download_targets.tsv

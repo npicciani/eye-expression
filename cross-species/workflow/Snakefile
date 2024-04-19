@@ -4,14 +4,12 @@ min_version("6.4.1")
 
 configfile: "config/config.yaml"
 
-# load rules
-# include: "rules/orthologues.smk"
 include: "rules/data.smk"
+include: "rules/orthologues.smk"
 
-# target rule
 rule all:
-	input:
-		expand("resources/sequences/ensembl/{species}.fasta.gz",species=ensembl_targets.loc[:,"species"]),
-		expand("resources/sequences/tsa/{species}.fasta.gz",species=tsa_targets.loc[:,"species"]),
-		expand("resources/sequences/gdrive/{species}.pep.fasta",species=gdrive_targets.loc[:,"species"]),
-		expand("resources/sequences/other/{species}/{filename}",zip, species= other_targets.loc[:,"species"],filename=other_targets.loc[:,"filename"])
+    input:
+        expand("resources/sequences/{species}.pep.fasta", species=targets.index),
+        get_orthofinder_outdir(),
+        expand("results/emapper/{species}/{species}.pep.emapper.annotations", species=targets.index),
+        "results/annotations/gene_trees.master.annotated.txt"
