@@ -10,9 +10,12 @@ include: "rules/reads.smk"
 include: "rules/align.smk"
 include: "rules/count.smk"
 include: "rules/stats.smk"
+include: "rules/pia.smk"
 
 # target rule
 rule all:
     input:
         "results/counts/counts_matrix.txt",
-        expand("results/star/mapping/{sample}/Aligned.out.sam.stats", sample=samples.loc[:,"sample_name"])
+        expand("results/star/mapping/{sample}/Aligned.out.sam.stats", sample=samples.loc[:,"sample_name"]),
+        expand("results/opsins/{proteins}.opsins.fasta", proteins=config["proteins"])
+
