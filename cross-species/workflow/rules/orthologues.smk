@@ -1,22 +1,6 @@
 from datetime import date
 import os
 
-def get_orthofinder_outdir():
-    """
-    Generate path to orthofinder gene trees folder with current date as written by orthofinder
-    """
-    ortho_dir='results/orthofinder'
-    if os.path.exists(ortho_dir):
-        for results_folder in os.listdir(ortho_dir):
-            results_path=f"results/orthofinder/{results_folder}/Gene_Trees"
-            return results_path
-    else:
-        today = date.today()
-        monthDay = today.strftime("%b%d")
-        outdir= f"results/orthofinder/Results_{monthDay}/Gene_Trees"
-        return outdir
-
-
 rule gunzip:
     """
     Decompress (if gzipped) protein files downloaded from public databases.
