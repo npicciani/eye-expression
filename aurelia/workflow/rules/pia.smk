@@ -3,7 +3,7 @@ rule get_opsins:
         script="workflow/scripts/pia.py",
         peptides=expand("{proteins}", proteins=config["proteins"])
     output:
-        expand("results/opsins/{proteins}.opsins.fasta", proteins=config["proteins"])
+        expand("results/opsins/{proteins_stem}.opsins.fasta", proteins_stem=config["proteins_stem"])
     conda:
         "../envs/pia.yaml"
     threads: 8

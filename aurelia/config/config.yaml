@@ -8,3 +8,4 @@ mergeReads:
 reference: resources/reference/ARSv1_genome_assembly.fa
 reference_gtf: resources/reference/ARSv1_genome_assembly.gtf
 proteins: resources/reference/ARSv1_proteins.fa
+proteins_stem: ARSv1_proteins
