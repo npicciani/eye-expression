@@ -1,7 +1,7 @@
 # eye-expression
 Gene expression analysis of jellyfish eyes
 
-This repository contains data and scripts associated with Picciani et al. 2021.
+This repository contains data and scripts associated with Picciani et al. 2025.
 
 Brief description of directories:
 
