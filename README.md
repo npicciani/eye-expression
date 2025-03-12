@@ -14,3 +14,5 @@ For each species (Sarsia, Aurelia, Tripedalia) you can find the following:
 	+/jobs: slurm jobs for data analysis ran on Farnam
 
 	+/results: results from each analysis step
+
+The Expression_analyses folder contains the R code and primary data files for differential expression, GO enrichment, and cross-species comparisons.
