@@ -1,4 +1,3 @@
-# load sample information from sample.tsv file (necessary??)
 import pandas as pd
 import os
 
