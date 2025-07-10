@@ -17,9 +17,9 @@ include: "rules/trinotate.smk"
 # target rule
 rule all:
     input:
-        # expand("resources/rawdata/{accs}_{read}.fastq", accs=units.loc[:,"sra"], read=["1","2"]),
-        # expand("results/star/mapping/{accession}/Aligned.out.sam.stats", accession=units.loc[:,"sra"]),
-        # "results/counts/counts_matrix.txt",
-        # "results/busco",
-        # "results/trinotate/trinotate_annotation_report.xls",
+        expand("resources/rawdata/{accs}_{read}.fastq", accs=units.loc[:,"sra"], read=["1","2"]),
+        expand("results/star/mapping/{accession}/Aligned.out.sam.stats", accession=units.loc[:,"sra"]),
+        "results/counts/counts_matrix.txt",
+        "results/busco",
+        "results/trinotate/trinotate_annotation_report.xls",
         expand("results/opsins/{transcriptome}.fixed_longestORFperGene.opsins.fasta", transcriptome=config["reference"]["filename"])
